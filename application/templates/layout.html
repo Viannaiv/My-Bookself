@@ -6,9 +6,14 @@
     </head>
 
     <body>
+      <ul>
+        <li><a href="{{ url_for('works_index') }}">List works</a></li>
+        <li><a href="{{ url_for('works_form') }}">Add a work</a></li>
+      </ul>
+          
       {% block body %}
       <p>
-	Tähän tuodaan sisältö muualta.
+	      Content.
       </p>
       {% endblock %}
     </body>

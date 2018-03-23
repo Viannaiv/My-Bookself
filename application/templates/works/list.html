@@ -12,6 +12,11 @@
       <td>{{ work.name }}</td>
       <td>{{ work.published }}</td>
       <td>{{ work.description }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('work_reset_description', work_id=work.id) }}">
+          <input type="submit" value="Reset description"/>
+        </form>
+      </td>
     </tr>
     {% endfor %}
   </table>

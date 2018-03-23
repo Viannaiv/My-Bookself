@@ -2,9 +2,12 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('works_create') }}">
+  <span>Name: </span><br/>
   <input type="text" name="name"/><br/>
+  <span>Year of publication: </span><br/>
   <input type="text" name="published"/><br/>
-  <input type="text" name="description"/><br/>
+  <span>Description: </span><br/>
+  <input type="text" name="description"/><br/><br/>
   <input type="submit" value="Add a new work"/>
 </form>
 {% endblock %}
