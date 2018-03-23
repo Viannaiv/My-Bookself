@@ -44,6 +44,6 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi.
 ## Linkkejä
 
 __User Stories__
-
+[Käyttötapaukset](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/user%20stories.txt)
 
 __Tietokantakaavio__
