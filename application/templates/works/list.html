@@ -1,0 +1,18 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Work</th>
+      <th>Published</th>
+      <th>Description</th>
+    </tr>
+    {% for work in works %}
+    <tr>
+      <td>{{ work.name }}</td>
+      <td>{{ work.published }}</td>
+      <td>{{ work.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

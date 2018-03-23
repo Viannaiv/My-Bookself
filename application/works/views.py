@@ -1,6 +1,10 @@
 ﻿from application import app, db
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from application.works.models import Work
+
+@app.route("/works", methods=["GET"])
+def works_index():
+    return render_template("works/list.html", works = Work.query.all())
 
 @app.route("/works/new/")
 def works_form():
@@ -13,4 +17,4 @@ def works_create():
     db.session().add(w)
     db.session().commit()
     
-    return "hello world!"
+    return redirect(url_for("works_index"))
