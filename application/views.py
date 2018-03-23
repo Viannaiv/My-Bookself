@@ -5,6 +5,3 @@ from application import app
 def index():
     return render_template("index.html")
 
-@app.route("/demo")
-def content():
-    return render_template("demo.html", nimi=nimi, lista=lista, esineet=esineet)

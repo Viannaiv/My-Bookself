@@ -1,18 +1,14 @@
 ﻿from flask import Flask, render_template
 app = Flask(__name__)
 
+from flask_sqlalchemy import SQLAlchemy
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///bookshelf.db"
+app.config["SQLALCHEMY_ECHO"] = True
+
+db = SQLAlchemy(app)
+
 from application import views
 
-class Item:
-    def __init__(self, name):
-        self.name = name
+from application.works import models
 
-nimi = "Essi Esimerkki"
-
-lista = [1, 1, 2, 3, 5, 8, 11]
-
-esineet = []
-esineet.append(Item("Eka"))
-esineet.append(Item("Toka"))
-esineet.append(Item("Kolmas"))
-esineet.append(Item("Neljäs"))
+db.create_all()
