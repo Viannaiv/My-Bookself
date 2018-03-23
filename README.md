@@ -3,6 +3,9 @@
 Työn alla oleva opiskelijaprojekti Helsingin yliopiston tarjoamaa Tietokantasovellus-harjoitustyötä
 varten.
 
+__Sovellus löytyy Herokusta:__ 
+[Sovellus Herokussa](https://tsoha-mybookself.herokuapp.com/)
+
 ## Kuvaus (saattaa vielä hieman muuttua)
 
 My Bookself on web-sovellus, jonka avulla sovelluksen käyttäjä voi pitää kirjaa oman kirjahyllynsä
@@ -37,3 +40,10 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi.
 - Käyttäjän omistamien painosten selaaminen (ja haku?)
 - Painosten lisääminen ja tietojen muokkaaminen (lomake)
 - Käyttäjätilin tietojen muuttaminen ja tilin poisto
+
+## Linkkejä
+
+__User Stories__
+
+
+__Tietokantakaavio__
