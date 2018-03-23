@@ -1,9 +1,10 @@
-﻿# My Bookself
+
+# My Bookself
 
 Työn alla oleva opiskelijaprojekti Helsingin yliopiston tarjoamaa Tietokantasovellus-harjoitustyötä
 varten.
 
-__Sovellus löytyy Herokusta:__ 
+__Sovellus löytyy Herokusta: __ 
 [Sovellus Herokussa](https://tsoha-mybookself.herokuapp.com/)
 
 ## Kuvaus (saattaa vielä hieman muuttua)
@@ -43,7 +44,10 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi.
 
 ## Linkkejä
 
-__User Stories__
+__User Stories: __
 [Käyttötapaukset](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/user%20stories.txt)
 
-__Tietokantakaavio__
+__Tietokantakaavio: __
+[Alustava tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
+
+Alustava versio kaaviosta! Attribuutit lisätään jälkeenpäin ja rakenne tulee todennäköisesti hieman vielä muuttumaan.
