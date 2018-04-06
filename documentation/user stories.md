@@ -1,4 +1,4 @@
-Tavallinen rekisteröitynyt käyttäjä:
+﻿## Tavallinen rekisteröitynyt käyttäjä:
 
   - Käyttäjänä voin lisätä painoksia omalle listalleni "Kirjahyllyyni". Lisäksi voin myös poistaa niitä sieltä
     sekä muokata niiden tietoja, jotta voin helposti pitää inventaariota oikean kirjahyllyni sisällöstä.
@@ -11,7 +11,7 @@ Tavallinen rekisteröitynyt käyttäjä:
   - Käyttäjänä voin muokata oman tilini tietoja ja poistaa tilini.
   
   
-Ylläpitäjä: 
+## Ylläpitäjä: 
 
   - Ylläpitäjänä voin käsitellä käyttäjien esittämiä toiveita lisättävistä teoksista ja lisätä niitä. Voin myös
     käsitellä ja muokata tietokannassa olevien teosten tietoja.
