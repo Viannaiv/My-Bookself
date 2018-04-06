@@ -1,4 +1,4 @@
-﻿from flask import Flask, render_template
+﻿from flask import Flask
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
@@ -11,5 +11,8 @@ from application import views
 
 from application.works import models
 from application.works import views
+
+from application.auth import models
+from application.auth import views
 
 db.create_all()
