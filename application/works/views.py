@@ -26,6 +26,9 @@ def work_reset_description(work_id):
 def works_create():
     form = WorkForm(request.form)
 
+    if not form.validate():
+        return render_template("works/new.html", form = form)
+
     w = Work(form.name.data, form.published.data, form.description.data)
     
     db.session().add(w)

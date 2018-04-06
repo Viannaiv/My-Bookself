@@ -10,6 +10,13 @@
       <td>
         {{ form.name }}
       </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>
@@ -17,6 +24,13 @@
       </td>
       <td>
         {{ form.published }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.published.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
       </td>
     </tr>
     <tr>
@@ -26,9 +40,16 @@
       <td>
         {{ form.description }}
       </td>
+      <td>
+        <ul>
+          {% for error in form.description.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <input type="submit" value="Add a new work"/>
       </td>
     </tr>
