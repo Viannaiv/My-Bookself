@@ -13,12 +13,13 @@ def works_index():
 def works_form():
     return render_template("works/new.html", form = WorkForm())
 
-@app.route("/works/<work_id>/", methods=["POST"])
+#Add "Delete ....?" to avoid misclicks
+# consider moving ths and editig attributes to the viewing of one Work. Decide later.
+@app.route("/works/delete/<work_id>/", methods=["POST"])
 @login_required
-def work_reset_description(work_id):
+def work_delete(work_id):
 
-    w = Work.query.get(work_id)
-    w.description = "No description has been provided yet."
+    Work.query.filter_by(id=work_id).delete()
     db.session().commit()
   
     return redirect(url_for("works_index"))
@@ -37,3 +38,4 @@ def works_create():
     db.session().commit()
     
     return redirect(url_for("works_index"))
+
