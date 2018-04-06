@@ -7,7 +7,7 @@ from application.works.forms import WorkForm
 def works_index():
     return render_template("works/list.html", works = Work.query.all())
 
-@app.route("/works/new/")
+@app.route("/works/new/", methods=["GET"])
 def works_form():
     return render_template("works/new.html", form = WorkForm())
 
