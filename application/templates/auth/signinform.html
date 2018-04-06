@@ -1,15 +1,16 @@
 ﻿{% extends "layout.html" %}
-
+  
 {% block body %}
 {{ error }}
-<form method="POST" action="{{ url_for('auth_login') }}">
+<br/><br/>
+<form method="POST" action="{{ url_for('auth_signin') }}">
   <table>
     <tr>
       <td>
-	    {{ form.username.label }}
+        {{ form.username.label }}
       </td>
       <td>
-	    {{ form.username }}
+        {{ form.username }}
       </td>
       <td>
         <ul>
@@ -21,10 +22,10 @@
     </tr>
     <tr>
       <td>
-	    {{ form.password.label }}
+        {{ form.password.label }}
       </td>
       <td>
-	    {{ form.password }}
+        {{ form.password }}
       </td>
       <td>
         <ul>
@@ -35,9 +36,18 @@
       </td>
     </tr>
     <tr>
-      <td colspan="3">
-	<input type="submit" value="Login"/>
+      <td>
+        {{ form.confirm.label }}
+      </td>
+      <td>
+        {{ form.confirm }}
       </td>
     </tr>
+    <tr>
+      <td colspan="3">
+        <input type="submit" value="Sign in"/>
+      </td>
+    </tr>
+  </table>
 </form>
 {% endblock %}
