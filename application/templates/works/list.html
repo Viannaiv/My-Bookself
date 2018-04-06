@@ -10,9 +10,18 @@
     </tr>
     {% for work in works %}
     <tr>
-      <td>{{ work.name }}</td>
-      <td>{{ work.published }}</td>
-      <td>{{ work.description }}</td>
+      <td>
+        <span>{{ work.name }}</span>
+        <a href="{{ url_for('work_editname', work_id=work.id) }}">Edit name</a>
+      </td>
+      <td>
+        <span>{{ work.published }}</span>
+        <a href="{{ url_for('work_editpublished', work_id=work.id) }}">Edit</a>
+      </td>
+      <td>
+        <span>{{ work.description }}</span>
+        <a href="{{ url_for('work_editdescription', work_id=work.id) }}">Edit</a>
+      </td>
       <td>
         <form method="POST" action="{{ url_for('work_delete', work_id=work.id) }}">
           <input type="submit" value="Delete work"/>

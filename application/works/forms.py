@@ -9,4 +9,20 @@ class WorkForm(FlaskForm):
     class Meta:
         csrf = False
 
-   
+class WorkEditName(FlaskForm):
+    name = StringField("New name: ", [validators.Length(min=1, max=150)])
+    
+    class Meta:
+        csrf = False
+
+class WorkEditPublished(FlaskForm):
+    published = IntegerField("Year of publication: ", [validators.NumberRange(min=0, max=2018)])
+    
+    class Meta:
+        csrf = False
+
+class WorkEditDescription(FlaskForm):
+    description = TextAreaField("Description: ", [validators.Length(max=600, min=1)])
+
+    class Meta:
+        csrf = False
