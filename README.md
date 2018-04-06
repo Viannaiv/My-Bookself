@@ -45,7 +45,7 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi.
 ## Linkkejä
 
 **User Stories:**
-[Käyttötapaukset](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/user%20stories.txt)
+[Käyttötapaukset](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/user%20stories.md)
 
 **Tietokantakaavio:**
 [Alustava tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
