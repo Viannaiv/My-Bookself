@@ -1,6 +1,7 @@
 ﻿from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.works.models import Work
+from application.works.forms import WorkForm
 
 @app.route("/works", methods=["GET"])
 def works_index():
@@ -8,7 +9,7 @@ def works_index():
 
 @app.route("/works/new/")
 def works_form():
-    return render_template("works/new.html")
+    return render_template("works/new.html", form = WorkForm())
 
 # This is just a test functionality that will be edited so as
 # to be a bit more useful later. For now this is here just for learning purposes.
@@ -23,7 +24,9 @@ def work_reset_description(work_id):
 
 @app.route("/works/new/", methods=["POST"])
 def works_create():
-    w = Work(request.form.get("name"), request.form.get("published"), request.form.get("description"))
+    form = WorkForm(request.form)
+
+    w = Work(form.name.data, form.published.data, form.description.data)
     
     db.session().add(w)
     db.session().commit()
