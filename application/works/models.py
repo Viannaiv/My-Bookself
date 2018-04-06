@@ -10,3 +10,5 @@ class Work(db.Model):
         self.name = name
         self.published = published
         self.description = description
+
+# add BC and AD

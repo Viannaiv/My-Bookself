@@ -9,4 +9,4 @@ class WorkForm(FlaskForm):
     class Meta:
         csrf = False
 
-# BC and AD might be a good idea to add
+# BC and AD must be added
