@@ -1,8 +1,7 @@
 ﻿from application import db
+from application.models import Base
 
-class Work(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
+class Work(Base):
     published = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String(600), nullable=False)
 
@@ -11,4 +10,4 @@ class Work(db.Model):
         self.published = published
         self.description = description
 
-# add BC and AD
+# add BC and AD?
