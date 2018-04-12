@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>{{ work.name }}</h2>
+
+  <table>
+      <tr>
+        <td>
+          <span>Name: {{ work.name }}</span>
+          <a href="{{ url_for('work_editname', work_id=work.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Published in: {{ work.published }}</span>
+          <a href="{{ url_for('work_editpublished', work_id=work.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Description: {{ work.description }} </span>
+          <a href="{{ url_for('work_editdescription', work_id=work.id) }}">Edit</a>
+        </td>
+      </tr>
+  </table>
+  
+{% endblock %}

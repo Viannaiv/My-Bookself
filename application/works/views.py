@@ -57,7 +57,7 @@ def work_editname(work_id):
     
     db.session().commit()
   
-    return redirect(url_for("works_index"))
+    return redirect(url_for("work_view", work_id=work_id))
 
 @app.route("/works/editpublished/<work_id>/", methods=["GET"])
 @login_required
@@ -77,7 +77,7 @@ def work_editpublished(work_id):
     
     db.session().commit()
   
-    return redirect(url_for("works_index"))
+    return redirect(url_for("work_view", work_id=work_id))
 
 @app.route("/works/editdescription/<work_id>/", methods=["GET"])
 @login_required
@@ -97,4 +97,8 @@ def work_editdescription(work_id):
     
     db.session().commit()
   
-    return redirect(url_for("works_index"))
+    return redirect(url_for("work_view", work_id=work_id))
+
+@app.route("/works/<work_id>/", methods=["GET"])
+def work_view(work_id):
+    return render_template("works/work.html", work = Work.query.get(work_id))
