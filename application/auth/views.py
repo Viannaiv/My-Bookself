@@ -49,4 +49,4 @@ def auth_signin():
     db.session().add(user)
     db.session().commit()
 
-    return redirect(url_for("index"))
+    return redirect(url_for("auth_login"))
