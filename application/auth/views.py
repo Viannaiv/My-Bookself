@@ -44,7 +44,7 @@ def auth_signin():
     if user:
         return render_template("auth/signinform.html", form = form, error = "Username already in use!")
 
-    user = User(form.username.data, form.password.data)
+    user = User(form.name.data, form.username.data, form.password.data)
 
     db.session().add(user)
     db.session().commit()
