@@ -1,0 +1,39 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>{{ edition.name }}</h2>
+
+  <table>
+      <tr>
+        <td>
+          <span>Name: {{ edition.name }}</span>
+          <a href="{{ url_for('edition_editnameform', edition_id=edition.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Printed in: {{ edition.printed }}</span>
+          <a href="{{ url_for('edition_editprintedform', edition_id=edition.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Published in: {{ edition.publisher }}</span>
+          <a href="{{ url_for('edition_editpublisherform', edition_id=edition.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Language: {{ edition.language }}</span>
+          <a href="{{ url_for('edition_editlanguageform', edition_id=edition.id) }}">Edit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Read: {{ edition.read }}</span>
+          <a href="{{ url_for('edition_editreadform', edition_id=edition.id) }}">Edit</a>
+        </td>
+      </tr>
+  </table>
+  
+{% endblock %}

@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('edition_editprinted', edition_id=edition_id) }}">
+  <table>
+    <tr>
+      <td>
+	    {{ form.printed.label }}
+      </td>
+      <td>
+	    {{ form.printed }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.printed.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+	<input type="submit" value="Set Printed"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}

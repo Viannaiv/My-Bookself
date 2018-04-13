@@ -1,7 +1,7 @@
 ﻿from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.editions.models import Edition
-from application.editions.forms import EditionForm
+from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead
 from flask_login import login_required, current_user
 
 @app.route("/editions", methods=["GET"])
@@ -31,3 +31,108 @@ def editions_create():
     db.session().commit()
     
     return redirect(url_for("editions_index"))
+
+@app.route("/editions/<edition_id>/", methods=["GET"])
+@login_required
+def edition_view(edition_id):
+    return render_template("editions/edition.html", edition = Edition.query.get(edition_id))
+
+@app.route("/editions/editname/<edition_id>/", methods=["GET"])
+@login_required
+def edition_editnameform(edition_id):  
+    return render_template("editions/editname.html", form = EditionEditName(), edition_id=edition_id)
+
+@app.route("/editions/editname/<edition_id>/", methods=["POST"])
+@login_required
+def edition_editname(edition_id):
+    form = EditionEditName(request.form)
+
+    if not form.validate():
+        return render_template("editions/editname.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+    e.name = form.name.data
+    
+    db.session().commit()
+  
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editprinted/<edition_id>/", methods=["GET"])
+@login_required
+def edition_editprintedform(edition_id):  
+    return render_template("editions/editprinted.html", form = EditionEditPrinted(), edition_id=edition_id)
+
+@app.route("/editions/editprinted/<edition_id>/", methods=["POST"])
+@login_required
+def edition_editprinted(edition_id):
+    form = EditionEditPrinted(request.form)
+
+    if not form.validate():
+        return render_template("editions/editprinted.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+    e.printed = form.printed.data
+    
+    db.session().commit()
+  
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editpublisher/<edition_id>/", methods=["GET"])
+@login_required
+def edition_editpublisherform(edition_id):  
+    return render_template("editions/editpublisher.html", form = EditionEditPublisher(), edition_id=edition_id)
+
+@app.route("/editions/editpublisher/<edition_id>/", methods=["POST"])
+@login_required
+def edition_editpublisher(edition_id):
+    form = EditionEditPublisher(request.form)
+
+    if not form.validate():
+        return render_template("editions/editpublisher.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+    e.publisher = form.publisher.data
+    
+    db.session().commit()
+  
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editlanguage/<edition_id>/", methods=["GET"])
+@login_required
+def edition_editlanguageform(edition_id):  
+    return render_template("editions/editlanguage.html", form = EditionEditLanguage(), edition_id=edition_id)
+
+@app.route("/editions/editlanguage/<edition_id>/", methods=["POST"])
+@login_required
+def edition_editlanguage(edition_id):
+    form = EditionEditLanguage(request.form)
+
+    if not form.validate():
+        return render_template("editions/editlanguage.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+    e.language = form.language.data
+    
+    db.session().commit()
+  
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editread/<edition_id>/", methods=["GET"])
+@login_required
+def edition_editreadform(edition_id):  
+    return render_template("editions/editread.html", form = EditionEditRead(), edition_id=edition_id)
+
+@app.route("/editions/editread/<edition_id>/", methods=["POST"])
+@login_required
+def edition_editread(edition_id):
+    form = EditionEditRead(request.form)
+
+    if not form.validate():
+        return render_template("editions/editread.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+    e.read = form.read.data
+    
+    db.session().commit()
+  
+    return redirect(url_for("edition_view", edition_id=edition_id))

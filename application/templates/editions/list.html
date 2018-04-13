@@ -13,7 +13,9 @@
     </tr>
     {% for edition in editions %}
     <tr>
-      <td>{{ edition.name }}</td>
+      <td>
+        <a href="{{ url_for('edition_view', edition_id=edition.id) }}">{{ edition.name }}</a>
+      </td>
       <td>{{ edition.printed }}</td>
       <td>{{ edition.publisher }}</td>
       <td>{{ edition.language }}</td>
