@@ -1,6 +1,8 @@
 ﻿from application import db
 from application.models import Base
 
+from sqlalchemy.sql import text
+
 class User(Base):
 
     __tablename__ = "account"
@@ -30,7 +32,7 @@ class User(Base):
 
     @staticmethod
     def users_with_no_books():
-        stmt = text("SELECT COUNT(Account.id) FROM Account"
+        stmt = text("SELECT Account.username FROM Account"
                      " LEFT JOIN Edition ON Edition.account_id = Account.id"
                      " GROUP BY Account.id"
                      " HAVING COUNT(Edition.id) = 0")
@@ -38,6 +40,6 @@ class User(Base):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1]})
+            response.append({"username":row[0]})
 
-        return response
+        return response 
