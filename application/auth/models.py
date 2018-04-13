@@ -8,6 +8,9 @@ class User(Base):
     username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(20), nullable=False)
 
+    editions = db.relationship("Edition", backref='account', lazy=True)
+
+
     def __init__(self, name, username, password):
         self.name = name
         self.username = username

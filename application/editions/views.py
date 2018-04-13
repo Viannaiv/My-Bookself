@@ -5,6 +5,7 @@ from application.editions.models import Edition
 from flask_login import login_required
 
 @app.route("/editions", methods=["GET"])
+@login_required
 def editions_index():
     return render_template("editions/list.html", editions = Edition.query.all())
 

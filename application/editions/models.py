@@ -8,6 +8,9 @@ class Edition(Base):
     read = db.Column(db.Boolean, nullable=False)
     notes = db.Column(db.String(600), nullable=False)
 
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+
+
     def __init__(self, name, printed, publisher, language, read):
         self.name = name
         self.printed = printed
