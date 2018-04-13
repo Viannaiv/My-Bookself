@@ -24,8 +24,9 @@ def editions_create():
 
     e = Edition(form.name.data, form.printed.data, form.publisher.data, 
                     form.language.data, form.read.data)
+
     e.account_id = current_user.id
-    
+
     db.session().add(e)
     db.session().commit()
     

@@ -27,3 +27,17 @@ class User(Base):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def users_with_no_books():
+        stmt = text("SELECT COUNT(Account.id) FROM Account"
+                     " LEFT JOIN Edition ON Edition.account_id = Account.id"
+                     " GROUP BY Account.id"
+                     " HAVING COUNT(Edition.id) = 0")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response

@@ -8,3 +8,5 @@ class EditionForm(FlaskForm):
     language = StringField("Language: ", [validators.Length(min=3, max=50)])
     read = BooleanField("I have read this book: ")
 
+    class Meta:
+        csrf = False
