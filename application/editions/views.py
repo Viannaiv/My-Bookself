@@ -7,7 +7,7 @@ from flask_login import login_required, current_user
 @app.route("/editions", methods=["GET"])
 @login_required
 def editions_index():
-    return render_template("editions/list.html", editions = Edition.query.all())
+    return render_template("editions/list.html", editions = Edition.query.filter_by(account_id = current_user.id))
 
 @app.route("/editions/new/", methods=["GET"])
 @login_required

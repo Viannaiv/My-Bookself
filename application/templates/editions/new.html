@@ -70,13 +70,6 @@
       <td>
         {{ form.read }}
       </td>
-      <td>
-        <ul>
-          {% for error in form.read.errors %}
-          <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      </td>
     </tr>
     <tr>
       <td colspan="3">
@@ -85,4 +78,7 @@
     </tr>
   </table>
 </form>
+
+<br/>
+<span>NOTE: ADDING NEW EDITIONS DOES NOT WORK CURRENTLY. STILL LOOKING FOR THE REASON...</span>
 {% endblock %}

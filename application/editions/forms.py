@@ -1,5 +1,5 @@
 ﻿from flask_wtf import FlaskForm
-from wtform import StringField, IntegerField, BooleanField, validators
+from wtforms import StringField, IntegerField, BooleanField, validators
 
 class EditionForm(FlaskForm):
     name = StringField("Name: ", [validators.Length(min=2, max=150)])
