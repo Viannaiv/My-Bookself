@@ -14,7 +14,7 @@ def works_form():
     return render_template("works/new.html", form = WorkForm())
 
 #Add "Delete ....?" to avoid misclicks
-# consider moving ths and editig attributes to the viewing of one Work. Decide later.
+# consider moving ths and editing attributes to the viewing of one Work. Decide later.
 @app.route("/works/delete/<work_id>/", methods=["POST"])
 @login_required
 def work_delete(work_id):

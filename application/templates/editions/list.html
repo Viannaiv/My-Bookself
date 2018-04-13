@@ -1,0 +1,25 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>My Bookshelf</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Printed</th>
+      <th>Publisher</th>
+      <th>Language</th>
+      <th>Read</th>
+      <th>Notes</th>
+    </tr>
+    {% for edition in editions %}
+    <tr>
+      <td>{{ edition.name }}</td>
+      <td>{{ edition.printed }}</td>
+      <td>{{ edition.publisher }}</td>
+      <td>{{ edition.language }}</td>
+      <td>{{ edition.read }}</td>
+      <td>{{ edition.notes }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
