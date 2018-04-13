@@ -1,8 +1,8 @@
 ﻿from application import db
-from application import Base
+from application.models import Base
 
 class Edition(Base):
-    printed = db.Column(db.Ineger, nullable=False)
+    printed = db.Column(db.Integer, nullable=False)
     publisher = db.Column(db.String(100), nullable=False)
     language = db.Column(db.String(50),nullable=False)
     read = db.Column(db.Boolean, nullable=False)
