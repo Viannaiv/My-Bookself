@@ -7,7 +7,7 @@ varten.
 **Sovellus löytyy Herokusta:**
 [Sovellus Herokussa](https://tsoha-mybookshelf.herokuapp.com/)
 
-## Kuvaus (saattaa vielä hieman muuttua)
+## Kuvaus
 
 My Bookself on web-sovellus, jonka avulla sovelluksen käyttäjä voi pitää kirjaa oman kirjahyllynsä
  sisällöstä.
