@@ -5,7 +5,7 @@ Työn alla oleva opiskelijaprojekti Helsingin yliopiston tarjoamaa Tietokantasov
 varten.
 
 **Sovellus löytyy Herokusta:**
-[Sovellus Herokussa](https://tsoha-mybookself.herokuapp.com/)
+[Sovellus Herokussa](https://tsoha-mybookshelf.herokuapp.com/)
 
 ## Kuvaus (saattaa vielä hieman muuttua)
 
