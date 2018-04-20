@@ -3,6 +3,8 @@ from application.models import Base
 
 from sqlalchemy.sql import text
 
+#Add Role here later
+
 class User(Base):
 
     __tablename__ = "account"
@@ -10,8 +12,8 @@ class User(Base):
     username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(20), nullable=False)
 
+    #Should use this in getting editions...
     editions = db.relationship("Edition", backref='account', lazy=True)
-    #Should use this in getting editions.
 
     def __init__(self, name, username, password):
         self.name = name
@@ -30,6 +32,12 @@ class User(Base):
     def is_authenticated(self):
         return True
 
+    def roles(self):
+        if self.username != "Vianna":
+            return ["NORMAL"]
+        else:
+            return ["ADMIN"]
+
     @staticmethod
     def users_with_no_books():
         stmt = text("SELECT Account.username FROM Account"
@@ -41,5 +49,8 @@ class User(Base):
         response = []
         for row in res:
             response.append({"username":row[0]})
+
+        if not response:
+            response.append({"username":"no such user"})
 
         return response
