@@ -7,3 +7,5 @@ class Format(Base):
 
     def __init__(self, name):
         self.name = name
+
+        #Add format changing possibility
