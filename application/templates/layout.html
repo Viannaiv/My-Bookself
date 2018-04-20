@@ -21,15 +21,19 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('works_form') }}">Add a work</a>
                   </li>
+                  {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('editions_index') }}">To {{ current_user.name }}'s Bookshelf  </a>
+                  </li>
+                  {% endif %}
                 </ul>
                 <div class="form-inline mt-2 mt-md-0">
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('editions_index') }}">To {{ current_user.name }}'s Bookshelf  </a>
-            <a href="{{ url_for('auth_logout') }}">Log out</a>
-            {% else %}
-            <a href="{{ url_for('auth_login') }}">Login  </a>
-            <a href="{{ url_for('auth_signin_form') }}">Sign in</a>
-            {% endif %}
+                  {% if current_user.is_authenticated %}
+                  <a href="{{ url_for('auth_logout') }}">Log out</a>
+                  {% else %}
+                  <a href="{{ url_for('auth_login') }}">Login</a>
+                  <a href="{{ url_for('auth_signin_form') }}">Sign in</a>
+                  {% endif %}
                 </div>
         </div>
       </nav>

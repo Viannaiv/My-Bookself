@@ -11,7 +11,7 @@ class User(Base):
     password = db.Column(db.String(20), nullable=False)
 
     editions = db.relationship("Edition", backref='account', lazy=True)
-
+    #Should use this in getting editions.
 
     def __init__(self, name, username, password):
         self.name = name
@@ -42,4 +42,4 @@ class User(Base):
         for row in res:
             response.append({"username":row[0]})
 
-        return response 
+        return response

@@ -35,7 +35,7 @@ class EditionEditLanguage(FlaskForm):
     class Meta:
         csrf = False
 
-class EditionEditRead(FlaskForm): #Will be moved to edition.html later
+class EditionEditRead(FlaskForm): #Will be moved to edition.html later?
     read = BooleanField("I have read this book: ")
 
     class Meta:
