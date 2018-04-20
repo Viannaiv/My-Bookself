@@ -9,3 +9,4 @@ class Format(Base):
         self.name = name
 
         #Add format changing possibility
+        #Add to format to edition info
