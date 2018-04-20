@@ -54,7 +54,7 @@ def login_required(role="ANY"):
     return wrapper
 
 
-from application import views
+from application import views, testValues
 
 from application.works import models
 from application.works import views
@@ -79,5 +79,13 @@ def load_user(user_id):
 
 try: 
     db.create_all()
+except:
+    pass
+
+try:
+    db.reflect()
+    db.drop_all()
+    db.create_all()
+    testValues.create_test_data()
 except:
     pass
