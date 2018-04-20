@@ -26,6 +26,7 @@ def editions_create():
                     form.language.data, form.read.data)
 
     e.account_id = current_user.id
+    e.format_id = 1 #this will be fixed later
 
     db.session().add(e)
     db.session().commit()
@@ -52,9 +53,9 @@ def edition_editname(edition_id):
 
     e = Edition.query.get(edition_id)
     e.name = form.name.data
-    
+
     db.session().commit()
-  
+
     return redirect(url_for("edition_view", edition_id=edition_id))
 
 @app.route("/editions/editprinted/<edition_id>/", methods=["GET"])
@@ -72,9 +73,9 @@ def edition_editprinted(edition_id):
 
     e = Edition.query.get(edition_id)
     e.printed = form.printed.data
-    
+
     db.session().commit()
-  
+
     return redirect(url_for("edition_view", edition_id=edition_id))
 
 @app.route("/editions/editpublisher/<edition_id>/", methods=["GET"])
@@ -92,9 +93,9 @@ def edition_editpublisher(edition_id):
 
     e = Edition.query.get(edition_id)
     e.publisher = form.publisher.data
-    
+
     db.session().commit()
-  
+
     return redirect(url_for("edition_view", edition_id=edition_id))
 
 @app.route("/editions/editlanguage/<edition_id>/", methods=["GET"])
@@ -112,9 +113,9 @@ def edition_editlanguage(edition_id):
 
     e = Edition.query.get(edition_id)
     e.language = form.language.data
-    
+
     db.session().commit()
-  
+
     return redirect(url_for("edition_view", edition_id=edition_id))
 
 @app.route("/editions/editread/<edition_id>/", methods=["GET"])
@@ -132,7 +133,7 @@ def edition_editread(edition_id):
 
     e = Edition.query.get(edition_id)
     e.read = form.read.data
-    
+
     db.session().commit()
-  
+
     return redirect(url_for("edition_view", edition_id=edition_id))

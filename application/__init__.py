@@ -65,6 +65,10 @@ from application.auth import views
 from application.editions import models
 from application.editions import views
 
+from application.formats import models
+from application.formats import views
+
+
 
 
 from application.auth.models import User

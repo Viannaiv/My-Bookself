@@ -79,7 +79,7 @@ def work_editpublished(work_id):
     return redirect(url_for("work_view", work_id=work_id))
 
 @app.route("/works/editdescription/<work_id>/", methods=["GET"])
-@login_required(role="ADMIN") #Currently directs to login-view if not ADMIN, I'll change this later
+@login_required()
 def work_editdescriptionform(work_id):  
     return render_template("works/editdescription.html", form = WorkEditDescription(), work_id=work_id)
 

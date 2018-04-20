@@ -9,7 +9,7 @@ class Edition(Base):
     notes = db.Column(db.String(600), nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
-
+    format_id = db.Column(db.Integer, db.ForeignKey('format.id'), nullable=False)
 
     def __init__(self, name, printed, publisher, language, read):
         self.name = name

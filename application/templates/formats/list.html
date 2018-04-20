@@ -1,0 +1,13 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+<h2>Formats</h2>
+<ul title="Formats">
+  {% for format in formats %}
+  <li>{{ format.id }}, {{ format.name }}</li>
+  {% endfor %}
+</ul><br/>
+
+<a href="{{ url_for('formats_form') }}">Add a new format</a>
+
+{% endblock %}
