@@ -2,27 +2,33 @@
 
 {% block body %}
   <h2>{{ current_user.name }}'s Bookshelf</h2>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Printed</th>
-      <th>Publisher</th>
-      <th>Language</th>
-      <th>Read</th>
-      <th>Notes</th>
-    </tr>
-    {% for edition in editions %}
-    <tr>
-      <td>
-        <a href="{{ url_for('edition_view', edition_id=edition.id) }}">{{ edition.name }}</a>
-      </td>
-      <td>{{ edition.printed }}</td>
-      <td>{{ edition.publisher }}</td>
-      <td>{{ edition.language }}</td>
-      <td>{{ edition.read }}</td>
-      <td>{{ edition.notes }}</td>
-    </tr>
-    {% endfor %}
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Printed</th>
+        <th>Publisher</th>
+        <th>Language</th>
+        <th>Read</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+      <tbody>
+        {% for edition in editions %}
+        <tr>
+          <td>
+            <a href="{{ url_for('edition_view', edition_id=edition.id) }}">{{ edition.name }}</a>
+          </td>
+          <td>{{ edition.printed }}</td>
+          <td>{{ edition.publisher }}</td>
+          <td>{{ edition.language }}</td>
+          <td>{{ edition.read }}</td>
+          <td>{{ edition.notes }}</td>
+        </tr>
+        {% endfor %} 
+    </tbody>
   </table>
+
   <a href="{{ url_for('editions_form') }}">Add a new edition to Bookshelf</a>
 {% endblock %}

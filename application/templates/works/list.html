@@ -2,12 +2,16 @@
 
 {% block body %}
   <h2>Works</h2>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Published</th>
-      <th>Description</th>
-    </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Published</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
     {% for work in works %}
     <tr>
       <td>
@@ -22,6 +26,7 @@
       </td>
     </tr>
     {% endfor %}
+    </tbody>
   </table><br/>
 
   <a href="{{ url_for('works_form') }}">Add a new work</a>

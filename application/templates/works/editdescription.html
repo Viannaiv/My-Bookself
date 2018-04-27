@@ -2,7 +2,7 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('work_editdescription', work_id=work_id) }}">
-  <table>
+  <table class="table">
     <tr>
       <td>
 	    {{ form.description.label }}

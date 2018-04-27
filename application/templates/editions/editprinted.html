@@ -2,7 +2,7 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('edition_editprinted', edition_id=edition_id) }}">
-  <table>
+  <table class="table">
     <tr>
       <td>
 	    {{ form.printed.label }}
