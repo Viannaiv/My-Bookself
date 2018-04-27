@@ -34,6 +34,12 @@
           <a href="{{ url_for('edition_editreadform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
+      <tr>
+          <td>
+            <span>Notes: {{ edition.notes }}</span>
+            <a href="{{ url_for('edition_editnotesform', edition_id=edition.id) }}">Edit</a>
+          </td>
+        </tr>
   </table>
   
 {% endblock %}

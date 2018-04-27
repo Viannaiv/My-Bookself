@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('edition_editnotes', edition_id=edition_id) }}">
+  <table class="table">
+    <tr>
+      <td>
+	    {{ form.notes.label }}
+      </td>
+      <td>
+	    {{ form.notes }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.notes.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+	<input type="submit" value="Set Notes"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}

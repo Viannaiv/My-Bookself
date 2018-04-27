@@ -40,3 +40,9 @@ class EditionEditRead(FlaskForm): #Will be moved to edition.html later?
 
     class Meta:
         csrf = False
+
+class EditionEditNotes(FlaskForm): #Change max possibly later + add old notes to be visible here
+    notes = TextAreaField("Notes: ", [validators.Length(min=2, max=300)])
+
+    class Meta:
+        csrf = False

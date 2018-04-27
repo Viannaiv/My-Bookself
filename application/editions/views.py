@@ -1,7 +1,7 @@
 ﻿from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.editions.models import Edition
-from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead
+from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead, EditionEditNotes
 from flask_login import current_user, login_manager
 
 @app.route("/editions", methods=["GET"])
@@ -170,3 +170,27 @@ def edition_delete(edition_id):
     db.session().commit()
   
     return redirect(url_for("editions_index"))
+
+@app.route("/editions/editnotes/<edition_id>/", methods=["GET"])
+@login_required()
+def edition_editnotesform(edition_id):  
+    return render_template("editions/editnotes.html", form = EditionEditNotes(), edition_id=edition_id)
+
+@app.route("/editions/editnotes/<edition_id>/", methods=["POST"])
+@login_required()
+def edition_editnotes(edition_id):
+    form = EditionEditNotes(request.form)
+    
+    if not form.validate():
+        return render_template("editions/editnotes.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
+    e.notes = form.notes.data
+
+    db.session().commit()
+
+    return redirect(url_for("edition_view", edition_id=edition_id))
