@@ -20,13 +20,13 @@ on tarjolla kirjautuneiden käyttäjien jättämiä mielipiteitä (Toteutetaan l
 Rekisteröitynyt tavallinen käyttäjä voi kirjautua omaan "kirjahyllyynsä", jossa on mahdollista tarkastella
 käyttäjän omistamia painoksia eli versioita teoksista (siis yksittäisiä kappaleita kirjoja, 
 sarjakuvia, mangaa jne.). Lisäksi käyttäjän on mahdollista lisätä painoksia, määrittää ja muuttaa 
-niiden tietoja sekä poistaa niitä hyllystään. Kirjautuminen tapahtuisi sähköpostilla ja 
+niiden tietoja sekä poistaa niitä hyllystään. Kirjautuminen tapahtuisi käyttäjätunnuksella ja 
 salasanalla.
 
 Rekisteröityneellä tavallisella käyttäjällä on myös mahdollisuus pyytää jonkin puuttuvan teoksen lisäämistä
-tai esimerkiksi vaihtoehtoisen nimen lisäämistä kirjalle. Järjestelmällä on lisäksi ylläpitäjä/ ylläpitäjiä,
-joilla on oikeus käsitellä aiemmin mainittuja pyyntöjä ja muuttaa teosten tietoja, lisätä teoksia sekä 
-mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. 
+tai esimerkiksi vaihtoehtoisen nimen lisäämistä kirjalle (Ainakin toistaiseksi kaikkilla mahdollisuus lisätä teoksia).
+Järjestelmällä on lisäksi ylläpitäjä/ ylläpitäjiä, joilla on oikeus käsitellä aiemmin mainittuja pyyntöjä ja muuttaa teosten tietoja, lisätä teoksia sekä 
+mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkellä ylläpitäjän oikeuksiin kuuluu uusien formaattien lisääminen)
 
 
 
@@ -34,13 +34,13 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi.
 
 - Käyttäjätunnuksen (oltava uniikki) luonti
 - Kirjautuminen
-- Teoksen haku
+- Teoksen haku (vielä toteuttamatta, nyt vain listaus)
 - Teosten selailu
-- Pyyntö teosten lisäämiseksi tai tietojen muuttamiseksi
-- Teosten lisääminen (lomakkeella?)
+- Pyyntö teosten lisäämiseksi tai tietojen muuttamiseksi (saatetaan jättää toteuttamatta)
+- Teosten lisääminen
 - Käyttäjän omistamien painosten selaaminen (ja haku?)
-- Painosten lisääminen ja tietojen muokkaaminen (lomake)
-- Käyttäjätilin tietojen muuttaminen ja tilin poisto
+- Painosten lisääminen ja tietojen muokkaaminen
+- Käyttäjätilin tietojen muuttaminen ja tilin poisto (vielä toteuttamatta)
 
 ## Linkkejä
 
