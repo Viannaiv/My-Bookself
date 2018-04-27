@@ -47,11 +47,15 @@ def edition_editnameform(edition_id):
 @login_required
 def edition_editname(edition_id):
     form = EditionEditName(request.form)
-
+    
     if not form.validate():
         return render_template("editions/editname.html", form = form, edition_id=edition_id)
 
     e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
     e.name = form.name.data
 
     db.session().commit()
@@ -72,6 +76,10 @@ def edition_editprinted(edition_id):
         return render_template("editions/editprinted.html", form = form, edition_id=edition_id)
 
     e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
     e.printed = form.printed.data
 
     db.session().commit()
@@ -92,6 +100,10 @@ def edition_editpublisher(edition_id):
         return render_template("editions/editpublisher.html", form = form, edition_id=edition_id)
 
     e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
     e.publisher = form.publisher.data
 
     db.session().commit()
@@ -112,6 +124,10 @@ def edition_editlanguage(edition_id):
         return render_template("editions/editlanguage.html", form = form, edition_id=edition_id)
 
     e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
     e.language = form.language.data
 
     db.session().commit()
@@ -132,6 +148,10 @@ def edition_editread(edition_id):
         return render_template("editions/editread.html", form = form, edition_id=edition_id)
 
     e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+        
     e.read = form.read.data
 
     db.session().commit()

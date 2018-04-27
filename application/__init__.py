@@ -79,13 +79,14 @@ def load_user(user_id):
 
 try: 
     db.create_all()
-except:
-    pass
-
-try:
-    db.reflect()
-    db.drop_all()
-    db.create_all()
     testValues.create_test_data()
 except:
     pass
+
+#try:
+#    db.reflect()
+#    db.drop_all()
+#    db.create_all()
+#    testValues.create_test_data()
+#except:
+#    pass
