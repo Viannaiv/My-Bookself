@@ -48,6 +48,6 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkell
 [Käyttötapaukset](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/user%20stories.md)
 
 **Tietokantakaavio:**
-[Alustava tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
+[Tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
 
 Alustava versio kaaviosta! Attribuutit lisätään jälkeenpäin ja rakenne tulee todennäköisesti hieman vielä muuttumaan.
