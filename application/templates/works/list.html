@@ -2,6 +2,7 @@
 
 {% block body %}
   <h2>Works</h2>
+  <div class="table-responsive"> 
   <table class="table">
     <thead>
       <tr>
@@ -27,7 +28,8 @@
     </tr>
     {% endfor %}
     </tbody>
-  </table><br/>
+  </table>
+  </div><br/>
 
   <a href="{{ url_for('works_form') }}">Add a new work</a>
 {% endblock %}

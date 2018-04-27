@@ -3,6 +3,7 @@
 {% block body %}
   <h2>{{ current_user.name }}'s Bookshelf</h2>
   
+  <div class="table-responsive"> 
   <table class="table table-striped">
     <thead>
       <tr>
@@ -12,6 +13,7 @@
         <th>Language</th>
         <th>Read</th>
         <th>Notes</th>
+        <th></th>
       </tr>
     </thead>
       <tbody>
@@ -25,10 +27,16 @@
           <td>{{ edition.language }}</td>
           <td>{{ edition.read }}</td>
           <td>{{ edition.notes }}</td>
+          <td>
+            <form method="POST" action="{{ url_for('edition_delete', edition_id=edition.id) }}">
+              <input type="submit" value="Delete edition"/>
+            </form>
+          </td>
         </tr>
         {% endfor %} 
     </tbody>
   </table>
+  </div>
 
   <a href="{{ url_for('editions_form') }}">Add a new edition to Bookshelf</a>
 {% endblock %}

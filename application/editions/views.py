@@ -157,3 +157,16 @@ def edition_editread(edition_id):
     db.session().commit()
 
     return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/delete/<edition_id>/", methods=["POST"])
+@login_required()
+def edition_delete(edition_id):
+    e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
+    Edition.query.filter_by(id=edition_id).delete()
+    db.session().commit()
+  
+    return redirect(url_for("editions_index"))
