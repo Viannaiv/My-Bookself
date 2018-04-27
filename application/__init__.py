@@ -50,6 +50,7 @@ def login_required(role="ANY"):
                         break
 
             if unauthorized:
+                flash("You are not authorised to use this function.")
                 return login_manager.unauthorized()
             
             return fn(*args, **kwargs)

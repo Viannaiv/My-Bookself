@@ -1,0 +1,26 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+<h2>{{ user.name }}'s info</h2>
+
+  <table class="table">
+      <tr>
+        <td>
+          <span>Name: {{ user.name }}</span>
+          <a href="{{ url_for('auth_editname_form', user_id=user.id) }}">Change name</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Username: {{ user.username }}</span>
+          <a href="{{ url_for('auth_editusername_form', user_id=user.id) }}">Change username</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Password: </span>
+          <a href="{{ url_for('auth_editpassword_form', user_id=user.id) }}">Change password</a>
+        </td>
+      </tr>
+  </table>
+{% endblock %}
