@@ -2,7 +2,7 @@
 from flask import redirect, render_template, request, url_for
 from application.editions.models import Edition
 from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, login_manager
 
 @app.route("/editions", methods=["GET"])
 @login_required

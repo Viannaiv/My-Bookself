@@ -1,4 +1,4 @@
-﻿from flask import Flask
+﻿from flask import Flask, flash, redirect
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
@@ -25,7 +25,10 @@ login_manager.setup_app(app) #Here was .init_app
 login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
 
-
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    flash("Log in to use this function")
+    return redirect('/auth/login')
 
 from functools import wraps
 
@@ -72,6 +75,7 @@ from application.formats import views
 
 
 from application.auth.models import User
+from application.works.models import Work
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -79,14 +83,8 @@ def load_user(user_id):
 
 try: 
     db.create_all()
-    testValues.create_test_data()
+    works = Work.query.all()
+    if not works:
+        testValues.create_test_data()     
 except:
     pass
-
-#try:
-#    db.reflect()
-#    db.drop_all()
-#    db.create_all()
-#    testValues.create_test_data()
-#except:
-#    pass
