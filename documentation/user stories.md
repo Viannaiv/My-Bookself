@@ -13,7 +13,7 @@
   - Käyttäjänä voin tarkastella omistamiani kirjoja sovelluksessa ja hakea niitä erilaisilla hakukriteereillä. (Vielä toteuttamatta)
   - Käyttäjänä voin tarkastella ja hakea teoksia erilaisien hakukriteerien perusteella. Esimerkiksi voin tarkastella
     tietyn kirjailijan tai johonkin tiettyyn kategoriaan kuuluvia teoksia. (Keskeneräinen)
-  - Käyttäjänä voin muokata oman tilini tietoja ja poistaa tilini. (Vielä toteuttamatta)
+  - Käyttäjänä voin muokata oman tilini tietoja ja poistaa tilini.
   
   
 ## Ylläpitäjä: 
