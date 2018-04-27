@@ -40,7 +40,7 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkell
 - Teosten lisääminen
 - Käyttäjän omistamien painosten selaaminen (ja haku?)
 - Painosten lisääminen ja tietojen muokkaaminen
-- Käyttäjätilin tietojen muuttaminen ja tilin poisto (vielä toteuttamatta)
+- Käyttäjätilin tietojen muuttaminen ja tilin poisto
 
 ## Linkkejä
 
