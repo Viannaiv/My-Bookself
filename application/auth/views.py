@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, current_user
 
 from application import app, db, login_required
 from application.auth.models import User
+from application.editions.models import Edition #delete later?
 from application.auth.forms import LoginForm, SigninForm, ChangeNameForm, ChangePasswordForm, ChangeUsernameForm
 
 @app.route("/auth/login", methods = ["GET", "POST"])
@@ -150,3 +151,21 @@ def auth_editname(user_id):
 
     flash("Your name has succesfully been changed.")
     return redirect(url_for("user_view", user_id=user_id))
+
+@app.route("/auth/delete/<user_id>/", methods=["POST"])
+@login_required()
+def auth_delete(user_id):
+    user = User.query.get(user_id)
+
+    if user.id != current_user.id:
+        flash("You are not authorised to delete this information.") 
+        return redirect(url_for("index"))
+
+    Edition.query.filter_by(account_id=user_id).delete()
+    User.query.filter_by(id=user_id).delete()
+    db.session().commit()
+
+    #Do I have to log out the user?
+    #Add a really delete? message so no misclicks are possible
+    flash("Your account has succesfully been deleted.")
+    return redirect(url_for("index"))
