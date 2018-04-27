@@ -22,3 +22,4 @@
     käsitellä ja muokata tietokannassa olevien teosten tietoja. (Tämä on toistaiseksi toteuttamatta ja mietinnässä toteutetaanko ollenkaan)
   - Ylläpitäjänä voin tehdä kaiken mitä tavallinen käyttäjä voi tehdä.
   - Ylläpitäjänä voin lisätä muita käyttäjiä ylläpitäjiksi. (Vielä toteuttamaton)
+  - Ylläpitäjänä voin lisätä uusia formaatteja.
