@@ -48,7 +48,7 @@ def auth_signin():
         return render_template("auth/signinform.html", form = form, error = "Username already in use!")
 
     user = User(form.name.data, form.username.data, form.password.data)
-    if(user.username == "Vianna"):
+    if user.username == "Vianna":
         user.role_id = 1
     else:
         user.role_id = 2

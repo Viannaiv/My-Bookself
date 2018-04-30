@@ -5,8 +5,6 @@ from sqlalchemy.sql import text
 
 class Role(Base):
 
-    #Should I add a list of users with role?
-
     def __init__(self, id, name):
         self.id = id
         self.name = name
@@ -43,12 +41,13 @@ class User(Base):
     def roles(self):
         role = Role.query.get(self.role_id)
         return [role.name]
-        
-        #the old content of the method, just in case
-        #if self.username != "Vianna":
-        #    return ["NORMAL"]
-        #else:
-        #    return ["ADMIN"]
+
+    def is_admin(self):
+        role = Role.query.get(self.role_id)
+        if role.name == "ADMIN":
+            return True
+        else:
+            return False
 
     @staticmethod
     def users_with_no_books():
