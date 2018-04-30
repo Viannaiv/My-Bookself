@@ -5,14 +5,14 @@ from application.works.forms import WorkForm, WorkEditName, WorkEditPublished, W
 
 @app.route("/works", methods=["GET"])
 def works_index():
-    return render_template("works/list.html", works = Work.query.all())
+    return render_template("works/list.html", works = Work.query.filter(Work.id != 1)) #if the default is is changed change this
 
 @app.route("/works/new/", methods=["GET"])
 @login_required()
 def works_form():
     return render_template("works/new.html", form = WorkForm())
 
-#Add "Delete ....?" to avoid misclicks
+#Add "Delete ....?" to avoid misclicks, Actually maybe change so that only admin can delete works
 # consider moving ths and editing attributes to the viewing of one Work. Decide later.
 @app.route("/works/delete/<work_id>/", methods=["POST"])
 @login_required()

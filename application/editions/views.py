@@ -27,6 +27,7 @@ def editions_create():
 
     e.account_id = current_user.id
     e.format_id = 1 #this will be fixed later
+    e.work_id = 1 #and this one as well
 
     db.session().add(e)
     db.session().commit()

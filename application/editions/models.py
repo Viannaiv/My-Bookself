@@ -10,6 +10,7 @@ class Edition(Base):
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     format_id = db.Column(db.Integer, db.ForeignKey('format.id'), nullable=False)
+    work_id = db.Column(db.Integer, db.ForeignKey('work.id'), nullable=False)
 
     def __init__(self, name, printed, publisher, language, read):
         self.name = name
@@ -18,5 +19,3 @@ class Edition(Base):
         self.language = language
         self.read = read
         self.notes = "-"
-
-# Change notes to be nullable later?
