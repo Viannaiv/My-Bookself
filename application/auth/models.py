@@ -3,7 +3,13 @@ from application.models import Base
 
 from sqlalchemy.sql import text
 
-#Add Role here later
+class Role(Base):
+
+    #Should I add a list of users with role?
+
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
 
 class User(Base):
 
@@ -14,6 +20,8 @@ class User(Base):
 
     #Should use this in getting editions...
     editions = db.relationship("Edition", backref='account', lazy=True)
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
+
 
     def __init__(self, name, username, password):
         self.name = name
@@ -33,10 +41,14 @@ class User(Base):
         return True
 
     def roles(self):
-        if self.username != "Vianna":
-            return ["NORMAL"]
-        else:
-            return ["ADMIN"]
+        role = Role.query.get(self.role_id)
+        return [role.name]
+        
+        #the old content of the method, just in case
+        #if self.username != "Vianna":
+        #    return ["NORMAL"]
+        #else:
+        #    return ["ADMIN"]
 
     @staticmethod
     def users_with_no_books():

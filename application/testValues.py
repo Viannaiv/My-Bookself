@@ -2,8 +2,13 @@
 
 from application.formats.models import Format
 from application.works.models import Work
+from application.auth.models import Role, User
 
 def create_test_data():
+    role = Role(1, "ADMIN")
+    role2 = Role(2, "NORMAL")
+    db.session.add(role)
+    db.session.add(role2)
 
     work = Work("Empress Dowager Cixi", 2013, "The history of a woman chosen at the age of 16 to be one of the emperor's concubines, who eventually becomes the dowager empress of China.")
     work2 = Work("Humanity", 1999, "A Moral History of the Twentieth Century")
