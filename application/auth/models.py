@@ -42,6 +42,7 @@ class User(Base):
         role = Role.query.get(self.role_id)
         return [role.name]
 
+    #Delete
     def is_admin(self):
         if self.role_id == 1:
             return True
