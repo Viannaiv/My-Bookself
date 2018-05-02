@@ -43,8 +43,7 @@ class User(Base):
         return [role.name]
 
     def is_admin(self):
-        role = Role.query.get(self.role_id)
-        if role.name == "ADMIN":
+        if self.role_id == 1:
             return True
         else:
             return False
