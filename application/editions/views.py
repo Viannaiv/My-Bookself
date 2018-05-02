@@ -1,7 +1,8 @@
 ﻿from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.editions.models import Edition
-from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead, EditionEditNotes
+from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead, EditionEditNotes, EditionSelectWork
+from application.works.models import Work
 from flask_login import current_user, login_manager
 
 @app.route("/editions", methods=["GET"])
@@ -191,6 +192,36 @@ def edition_editnotes(edition_id):
         return login_manager.unauthorized()
 
     e.notes = form.notes.data
+
+    db.session().commit()
+
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editwork/<edition_id>/", methods=["GET"])
+@login_required()
+def edition_editworkform(edition_id):
+    form = EditionSelectWork()
+
+    form.work.choices = [(work.id, work.name) for work in Work.query.all()]
+
+    return render_template("editions/editwork.html", form = form, edition_id=edition_id)
+
+@app.route("/editions/editwork/<edition_id>/", methods=["POST"])
+@login_required()
+def edition_editwork(edition_id):
+    form = EditionSelectWork(request.form)
+    
+    form.work.choices = [(work.id, work.name) for work in Work.query.all()]
+
+    if not form.validate_on_submit():
+        return render_template("editions/editwork.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
+    e.work_id = form.work.data
 
     db.session().commit()
 

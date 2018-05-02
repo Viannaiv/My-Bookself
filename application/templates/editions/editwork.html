@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('edition_editwork', edition_id=edition_id) }}">
+  <table class="table">
+    <tr>
+      <td>
+	    {{ form.work.label }}
+      </td>
+      <td>
+	    {{ form.work }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.work.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+	<input type="submit" value="Set Work"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}
