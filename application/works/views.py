@@ -14,8 +14,9 @@ def works_form():
 
 #Add "Delete ....?" to avoid misclicks, Actually maybe change so that only admin can delete works
 # consider moving ths and editing attributes to the viewing of one Work. Decide later.
+#Add here the moving to default work when deleted
 @app.route("/works/delete/<work_id>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def work_delete(work_id):
 
     Work.query.filter_by(id=work_id).delete()
@@ -39,12 +40,12 @@ def works_create():
     return redirect(url_for("works_index"))
 
 @app.route("/works/editname/<work_id>/", methods=["GET"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editnameform(work_id):  
     return render_template("works/editname.html", form = WorkEditName(), work_id=work_id)
 
 @app.route("/works/editname/<work_id>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editname(work_id):
     form = WorkEditName(request.form)
 
@@ -59,12 +60,12 @@ def work_editname(work_id):
     return redirect(url_for("work_view", work_id=work_id))
 
 @app.route("/works/editpublished/<work_id>/", methods=["GET"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editpublishedform(work_id):  
     return render_template("works/editpublished.html", form = WorkEditPublished(), work_id=work_id)
 
 @app.route("/works/editpublished/<work_id>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editpublished(work_id):
     form = WorkEditPublished(request.form)
 
@@ -79,12 +80,12 @@ def work_editpublished(work_id):
     return redirect(url_for("work_view", work_id=work_id))
 
 @app.route("/works/editdescription/<work_id>/", methods=["GET"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editdescriptionform(work_id):  
     return render_template("works/editdescription.html", form = WorkEditDescription(), work_id=work_id)
 
 @app.route("/works/editdescription/<work_id>/", methods=["POST"])
-@login_required()
+@login_required(role="ADMIN")
 def work_editdescription(work_id):
     form = WorkEditDescription(request.form)
 

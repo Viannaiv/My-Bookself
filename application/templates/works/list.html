@@ -20,11 +20,13 @@
       </td>
       <td>{{ work.published }}</td>
       <td>{{ work.description }}</td>
+      {% if current_user.role_id == 1 %}
       <td>
         <form method="POST" action="{{ url_for('work_delete', work_id=work.id) }}">
           <input type="submit" value="Delete work"/>
         </form>
       </td>
+      {% endif %}
     </tr>
     {% endfor %}
     </tbody>

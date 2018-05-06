@@ -7,19 +7,25 @@
       <tr>
         <td>
           <span>Name: {{ work.name }}</span>
+          {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editnameform', work_id=work.id) }}">Edit</a>
+          {% endif %}
         </td>
       </tr>
       <tr>
         <td>
           <span>Published in: {{ work.published }}</span>
+          {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editpublishedform', work_id=work.id) }}">Edit</a>
+          {% endif %}
         </td>
       </tr>
       <tr>
         <td>
           <span>Description: {{ work.description }} </span>
+          {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editdescriptionform', work_id=work.id) }}">Edit</a>
+          {% endif %}
         </td>
       </tr>
   </table>
