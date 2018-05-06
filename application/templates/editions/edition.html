@@ -5,38 +5,44 @@
 
   <table class="table">
       <tr>
+        <td>Name: </td>
+        <td> {{ edition.name }} </td>
         <td>
-          <span>Name: {{ edition.name }}</span>
           <a href="{{ url_for('edition_editnameform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
       <tr>
+        <td>Printed in: </td>
+        <td> {{ edition.printed }} </td>
         <td>
-          <span>Printed in: {{ edition.printed }}</span>
           <a href="{{ url_for('edition_editprintedform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
       <tr>
+        <td>Publisher: </td>
+        <td> {{ edition.publisher }} </td>
         <td>
-          <span>Publisher: {{ edition.publisher }}</span>
           <a href="{{ url_for('edition_editpublisherform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
       <tr>
+        <td>Language: </td>
+        <td> {{ edition.language }} </td>
         <td>
-          <span>Language: {{ edition.language }}</span>
           <a href="{{ url_for('edition_editlanguageform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
       <tr>
+        <td>Read: </td>
+        <td>{{ edition.read }}</td>
         <td>
-          <span>Read: {{ edition.read }}</span>
           <a href="{{ url_for('edition_editreadform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
       <tr>
+        <td>Notes: </td>
+        <td>{{ edition.notes }}</td>
         <td>
-          <span>Notes: {{ edition.notes }}</span>
           <a href="{{ url_for('edition_editnotesform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
