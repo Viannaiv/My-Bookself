@@ -11,3 +11,4 @@ class Work(Base):
         self.description = description
 
 # add BC and AD?
+#here methods for searching related categories and authors
