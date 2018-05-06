@@ -5,24 +5,27 @@
 
   <table class="table">
       <tr>
+        <td>Name: </td>
+        <td> {{ work.name }} </td>
         <td>
-          <span>Name: {{ work.name }}</span>
           {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editnameform', work_id=work.id) }}">Edit</a>
           {% endif %}
         </td>
       </tr>
       <tr>
+        <td>Published in: </td>
+        <td> {{ work.published }} </td>
         <td>
-          <span>Published in: {{ work.published }}</span>
           {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editpublishedform', work_id=work.id) }}">Edit</a>
           {% endif %}
         </td>
       </tr>
       <tr>
+        <td>Description: </td>
+        <td> {{ work.description }} </td>
         <td>
-          <span>Description: {{ work.description }} </span>
           {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editdescriptionform', work_id=work.id) }}">Edit</a>
           {% endif %}
