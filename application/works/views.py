@@ -2,22 +2,26 @@
 from flask import redirect, render_template, request, url_for
 from application.works.models import Work
 from application.works.forms import WorkForm, WorkEditName, WorkEditPublished, WorkEditDescription
+from application.editions.models import Edition
 
 @app.route("/works", methods=["GET"])
 def works_index():
-    return render_template("works/list.html", works = Work.query.filter(Work.id != 1)) #if the default is is changed change this
+    return render_template("works/list.html", works = Work.query.filter(Work.id != 1)) #if the default is changed change this
 
 @app.route("/works/new/", methods=["GET"])
 @login_required()
 def works_form():
     return render_template("works/new.html", form = WorkForm())
 
-#Add "Delete ....?" to avoid misclicks, Actually maybe change so that only admin can delete works
-# consider moving ths and editing attributes to the viewing of one Work. Decide later.
 #Add here the moving to default work when deleted
 @app.route("/works/delete/<work_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def work_delete(work_id):
+    editions = Edition.query.filter_by(work_id=work_id)
+
+    for edition in editions:
+        edition.work_id = 1
+    db.session().commit()
 
     Work.query.filter_by(id=work_id).delete()
     db.session().commit()
