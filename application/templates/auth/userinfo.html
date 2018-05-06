@@ -5,27 +5,31 @@
 
   <table class="table">
       <tr>
+        <td>Name: </td>
+        <td> {{ user.name }} </td>
         <td>
-          <span>Name: {{ user.name }}</span>
           <a href="{{ url_for('auth_editname_form', user_id=user.id) }}">Change name</a>
         </td>
       </tr>
       <tr>
+        <td>Username: </td>
+        <td>{{ user.username }}</td>
         <td>
-          <span>Username: {{ user.username }}</span>
           <a href="{{ url_for('auth_editusername_form', user_id=user.id) }}">Change username</a>
         </td>
       </tr>
       <tr>
+        <td>Password: </td>
+        <td></td>
         <td>
-          <span>Password: </span>
           <a href="{{ url_for('auth_editpassword_form', user_id=user.id) }}">Change password</a>
         </td>
       </tr>
   </table>
-  <h3>Delete account and your Bookshelf: </h3>
-  <span>The decision to press this is final and cannot be taken back later!</span>
+
+  <h3>Delete your account and Bookshelf: </h3>
+  <span class="text-danger">The decision to delete your account is final and cannot be reversed!</span>
   <form method="POST" action="{{ url_for('auth_delete', user_id=user.id) }}">
-    <input type="submit" value="DELETE Account"/>
+    <input class="text-danger" type="submit" value="DELETE ACCOUNT"/>
   </form>
 {% endblock %}
