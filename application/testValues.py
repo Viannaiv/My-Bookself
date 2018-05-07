@@ -25,6 +25,7 @@ def create_test_data():
     db.session().add(work3)
     db.session().commit()
 
+    #maybe id=1 should be other not paperback?
     format = Format("Paperback")
     format2 = Format("Hardback")
     format3 = Format("Other")

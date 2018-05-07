@@ -1,8 +1,10 @@
 ﻿from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.editions.models import Edition
-from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher, EditionEditLanguage, EditionEditRead, EditionEditNotes, EditionSelectWork
+from application.editions.forms import EditionForm, EditionEditName, EditionEditPrinted, EditionEditPublisher
+from application.editions.forms import EditionEditLanguage, EditionEditRead, EditionEditNotes, EditionSelectWork, EditionSelectFormat
 from application.works.models import Work
+from application.formats.models import Format
 from flask_login import current_user, login_manager
 
 @app.route("/editions", methods=["GET"])
@@ -40,7 +42,8 @@ def editions_create():
 def edition_view(edition_id):
     e = Edition.query.get(edition_id)
     work_id = e.work_id
-    return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id))
+    format_id = e.format_id
+    return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id), format = Format.query.get(format_id))
 
 @app.route("/editions/editname/<edition_id>/", methods=["GET"])
 @login_required()
@@ -224,6 +227,36 @@ def edition_editwork(edition_id):
         return login_manager.unauthorized()
 
     e.work_id = form.work.data
+
+    db.session().commit()
+
+    return redirect(url_for("edition_view", edition_id=edition_id))
+
+@app.route("/editions/editformat/<edition_id>/", methods=["GET"])
+@login_required()
+def edition_editformatform(edition_id):
+    form = EditionSelectFormat()
+
+    form.format.choices = [(format.id, format.name) for format in Format.query.all()]
+
+    return render_template("editions/editformat.html", form = form, edition_id=edition_id)
+
+@app.route("/editions/editformat/<edition_id>/", methods=["POST"])
+@login_required()
+def edition_editformat(edition_id):
+    form = EditionSelectFormat(request.form)
+    
+    form.format.choices = [(format.id, format.name) for format in Format.query.all()]
+
+    if not form.validate_on_submit():
+        return render_template("editions/editformat.html", form = form, edition_id=edition_id)
+
+    e = Edition.query.get(edition_id)
+
+    if e.account_id != current_user.id: 
+        return login_manager.unauthorized()
+
+    e.format_id = form.format.data
 
     db.session().commit()
 

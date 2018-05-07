@@ -52,3 +52,9 @@ class EditionSelectWork(FlaskForm):
 
     class Meta:
         csrf = False
+
+class EditionSelectFormat(FlaskForm): #maybe change to Radio later
+    format = SelectField("Select work: ", [validators.data_required()], choices=[], coerce=int)
+
+    class Meta:
+        csrf = False

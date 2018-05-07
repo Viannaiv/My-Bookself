@@ -47,6 +47,13 @@
         </td>
       </tr>
       <tr>
+        <td>Format: </td>
+        <td> {{ format.name }} </td>
+        <td>
+          <a href="{{ url_for('edition_editformatform', edition_id=edition.id) }}">Change format</a>
+        </td>
+      </tr>
+      <tr>
         <td>Edition of the work: </td>
         {% if work.id != 1 %}
         <td> 
