@@ -15,6 +15,7 @@ def create_test_data():
     user = User("Vivianna", "Vianna", "plopetiplop")
     user.role_id = 1
     user2 = User("Tester", "Tester", "Testerer")
+    user2.role_id = 2
     db.session().add(user)
     db.session().add(user2)
     db.session.commit()
