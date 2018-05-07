@@ -4,7 +4,7 @@ from application.formats.models import Format
 from application.works.models import Work
 from application.auth.models import Role, User
 
-#delete user later
+#delete users later
 def create_test_data():
     role = Role(1, "ADMIN")
     role2 = Role(2, "NORMAL")
