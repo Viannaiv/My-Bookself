@@ -46,6 +46,22 @@
           <a href="{{ url_for('edition_editnotesform', edition_id=edition.id) }}">Edit</a>
         </td>
       </tr>
+      <tr>
+        <td>Edition of the work: </td>
+        {% if work.id != 1 %}
+        <td> 
+          <a href="{{ url_for('work_view', work_id=work.id) }}">{{ work.name }}</a> 
+        </td>
+        <td>
+          <a href="{{ url_for('edition_editworkform', edition_id=edition.id) }}">Change work</a>
+        </td>
+        {% else %}
+        <td>-</td>
+        <td>
+          <a href="{{ url_for('edition_editworkform', edition_id=edition.id) }}">Choose work</a>
+        </td>
+        {% endif %}
+      </tr>
   </table>
   
 {% endblock %}

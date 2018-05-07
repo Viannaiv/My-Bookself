@@ -38,7 +38,9 @@ def editions_create():
 @app.route("/editions/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_view(edition_id):
-    return render_template("editions/edition.html", edition = Edition.query.get(edition_id))
+    e = Edition.query.get(edition_id)
+    work_id = e.work_id
+    return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id))
 
 @app.route("/editions/editname/<edition_id>/", methods=["GET"])
 @login_required()
