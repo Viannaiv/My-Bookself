@@ -16,10 +16,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('works_index') }}">List works</a>
+              <a class="nav-link" href="{{ url_for('works_index') }}">Works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('works_form') }}">Add a work</a>
+              <a class="nav-link" href="{{ url_for('works_form') }}">Add work</a>
             </li>
             {% if current_user.is_authenticated %}
             <li class="nav-item">
