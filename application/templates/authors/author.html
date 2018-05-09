@@ -13,19 +13,25 @@
     </thead>
     <tbody>
     {% for work in works %}
+    {% if work.id == -1000 %}
+    <tr>
+      <td>No works added yet for {{ author.name }}</td>
+    </tr>
+    {% else %}
     <tr>
       <td>
         <a href="{{ url_for('work_view', work_id=work.id) }}">{{ work.name }}</a>
       </td>
       <td>{{ work.published }}</td>
-    </tr>
-    {% if current_user.role_id == 1 %}
+      {% if current_user.role_id == 1 %}
       <td>
         <form method="POST" action="{{ url_for('author_work_delete', author_id=author.id, work_id=work.id) }}">
           <input type="submit" value="Remove work from author"/>
         </form>
       </td>
       {% endif %}
+    </tr>
+    {% endif %}
     {% endfor %}
     </tbody>
   </table>

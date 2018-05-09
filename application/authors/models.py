@@ -28,6 +28,6 @@ class Author(Base):
             response.append({"id":row[0], "name":row[1], "published":row[2]})
 
         if not response:
-            response.append({"username":"No works added yet"})
+            response.append({"id":-1000, "name":"no works found", "published":"-"})
 
         return response
