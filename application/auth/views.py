@@ -3,8 +3,8 @@ from flask_login import login_user, logout_user, current_user
 
 from application import app, db, login_required
 from application.auth.models import User
-from application.editions.models import Edition #delete later?
-from application.auth.forms import LoginForm, SigninForm, ChangeNameForm, ChangePasswordForm, ChangeUsernameForm
+from application.editions.models import Edition
+from application.auth.forms import LoginForm, SigninForm, ChangeNameForm, ChangePasswordForm, ChangeUsernameForm, AddAdminForm
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -169,7 +169,38 @@ def auth_delete(user_id):
     User.query.filter_by(id=user_id).delete()
     db.session().commit()
 
-    #Do I have to log out the user?
     #Add a really delete? message so no misclicks are possible
     flash("Your account has succesfully been deleted.")
     return redirect(url_for("index"))
+
+@app.route("/auth/admins", methods=["GET"])
+@login_required(role="ADMIN")
+def auth_admin_index():
+    return render_template("auth/admins.html", admins = User.query.filter_by(role_id=1))
+
+@app.route("/auth/addadmin", methods=["GET"])
+@login_required(role="ADMIN")
+def auth_add_adminform():
+    form = AddAdminForm()
+
+    form.user.choices = [(user.id, user.username) for user in User.query.all()]
+
+    return render_template("auth/addadmin.html", form = form)
+
+@app.route("/auth/addadmin", methods=["POST"])
+@login_required(role="ADMIN")
+def auth_add_admin():
+    form = AddAdminForm(request.form)
+    
+    form.user.choices = [(user.id, user.username) for user in User.query.all()]
+
+    if not form.validate_on_submit():
+        return render_template("auth/addadmin.html", form = form)
+
+    user_id = form.user.data
+    user = User.query.get(user_id)
+    user.role_id = 1
+
+    db.session().commit()
+
+    return redirect(url_for("auth_admin_index"))

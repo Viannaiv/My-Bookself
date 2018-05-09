@@ -1,0 +1,13 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  
+  <ul title="Administrators">
+    {% for admin in admins %}
+    <li> {{ admin.username }} </li>
+    {% endfor %}
+  </ul><br/>
+  
+  <a href="{{ url_for('auth_add_adminform') }}">Add an admin</a>
+  
+  {% endblock %}

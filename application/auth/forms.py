@@ -1,5 +1,5 @@
 ﻿from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, validators
+from wtforms import PasswordField, StringField, SelectField, validators
   
 class LoginForm(FlaskForm):
     username = StringField("Username: ", [validators.Length(min=6, max=50)])
@@ -32,6 +32,12 @@ class ChangeUsernameForm(FlaskForm):
 
 class ChangeNameForm(FlaskForm):
     name = StringField("New name: ", [validators.Length(min=3, max=150)])
+
+    class Meta:
+        csrf = False
+
+class AddAdminForm(FlaskForm):
+    user = SelectField("Select user to promote: ", [validators.data_required()], choices=[], coerce=int)
 
     class Meta:
         csrf = False
