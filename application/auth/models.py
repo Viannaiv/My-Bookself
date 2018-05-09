@@ -16,7 +16,6 @@ class User(Base):
     username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(20), nullable=False)
 
-    #Should use this in getting editions...
     editions = db.relationship("Edition", backref='account', lazy=True)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
 
@@ -42,19 +41,12 @@ class User(Base):
         role = Role.query.get(self.role_id)
         return [role.name]
 
-    #Delete
-    def is_admin(self):
-        if self.role_id == 1:
-            return True
-        else:
-            return False
-
     @staticmethod
     def users_with_no_books():
         stmt = text("SELECT Account.username FROM Account"
-                     " LEFT JOIN Edition ON Edition.account_id = Account.id"
-                     " GROUP BY Account.id"
-                     " HAVING COUNT(Edition.id) = 0")
+                    " LEFT JOIN Edition ON Edition.account_id = Account.id"
+                    " GROUP BY Account.id"
+                    " HAVING COUNT(Edition.id) = 0")
         res = db.engine.execute(stmt)
 
         response = []
@@ -63,5 +55,19 @@ class User(Base):
 
         if not response:
             response.append({"username":"no such user"})
+
+        return response
+
+    @staticmethod
+    def users_count():
+        stmt = text("SELECT COUNT(Account.id) FROM Account")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"usercount":row[0]})
+
+        if not response:
+            response.append({"usercount":"no users found"})
 
         return response

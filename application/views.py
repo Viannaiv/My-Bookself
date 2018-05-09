@@ -4,5 +4,5 @@ from application.auth.models import User
 
 @app.route("/")
 def index():
-    return render_template("index.html", no_books=User.users_with_no_books())
+    return render_template("index.html", no_books=User.users_with_no_books(), user_count=User.users_count())
 

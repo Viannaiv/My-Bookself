@@ -6,9 +6,7 @@
 </h2>
 
 {% if no_books is defined %}
-<p>
-  Users without editions in their Bookshelves:
-</p>
+<p>Users without editions in their Bookshelves:</p>
 
 <ul>
   {% for user in no_books %}
@@ -17,7 +15,16 @@
   </li>
   {% endfor %}
 </ul>
+{% endif %}
 
+{% if user_count is defined %}
+<p>
+  We currently have 
+  {% for count in user_count %}
+  <span>{{ count.usercount }}</span>
+  {% endfor %}
+  registered users.
+</p>
 {% endif %}
 
 {% endblock %}
