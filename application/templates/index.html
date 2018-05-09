@@ -23,8 +23,17 @@
   {% for count in user_count %}
   <span>{{ count.usercount }}</span>
   {% endfor %}
-  registered users.
+  registered users, with a total of 
+  {% for count in user_count %}
+  <span>{{ count.editions }}</span>
+  editions in their bookshelves.
+  {% endfor %}
 </p>
 {% endif %}
+
+<p>
+  Join our registered users to add editions to your digital bookshelf 
+  and keep track of the contents of your bookshelves at home!
+</p>
 
 {% endblock %}

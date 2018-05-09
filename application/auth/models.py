@@ -54,20 +54,21 @@ class User(Base):
             response.append({"username":row[0]})
 
         if not response:
-            response.append({"username":"no such user"})
+            response.append({"username":"No such user"})
 
         return response
 
     @staticmethod
     def users_count():
-        stmt = text("SELECT COUNT(Account.id) FROM Account")
+        stmt = text("SELECT COUNT(DISTINCT Account.id), COUNT(DISTINCT Edition.id) FROM Account"
+                    " LEFT JOIN Edition ON Edition.account_id = Account.id")
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"usercount":row[0]})
+            response.append({"usercount":row[0], "editions":row[1]})
 
         if not response:
-            response.append({"usercount":"no users found"})
+            response.append({"usercount":"0", "editions":"0"})
 
         return response
