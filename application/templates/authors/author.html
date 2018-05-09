@@ -13,6 +13,7 @@
       <tr>
         <th>Work</th>
         <th>Published</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -43,7 +44,7 @@
   </div><br/>
 
   {% if current_user.is_authenticated %}
-  <a href="{{ url_for('author_addworkform', author_id=author.id) }}">Add a work</a>
+  <a href="{{ url_for('author_addworkform', author_id=author.id) }}">Add a work to author</a>
   {% endif %}
 
 
