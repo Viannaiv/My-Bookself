@@ -16,7 +16,7 @@ class Author(Base):
     @staticmethod
     def works_of_author(author_id):
         stmt = text("SELECT Work.id, Work.name, Work.published FROM Work"
-                    " LEFT JOIN AuthorWork ON AuthorWork.work_id = Work.id"
+                    " LEFT JOIN 'AuthorWork' ON AuthorWork.work_id = Work.id"
                     " LEFT JOIN Author ON AuthorWork.author_id = Author.id"
                     " WHERE Author.id = :a_id"
                     " ORDER BY Work.published").params(a_id=author_id)
