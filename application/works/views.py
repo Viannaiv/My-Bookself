@@ -6,14 +6,13 @@ from application.editions.models import Edition
 
 @app.route("/works", methods=["GET"])
 def works_index():
-    return render_template("works/list.html", works = Work.query.filter(Work.id != 1)) #if the default is changed change this
+    return render_template("works/list.html", works = Work.query.filter(Work.id != 1))
 
 @app.route("/works/new/", methods=["GET"])
 @login_required()
 def works_form():
     return render_template("works/new.html", form = WorkForm())
 
-#Add here the moving to default work when deleted
 @app.route("/works/delete/<work_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def work_delete(work_id):

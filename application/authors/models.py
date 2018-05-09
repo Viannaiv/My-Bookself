@@ -18,8 +18,8 @@ class Author(Base):
         stmt = text("SELECT Work.id, Work.name, Work.published FROM Work"
                     " LEFT JOIN AuthorWork ON AuthorWork.work_id = Work.id"
                     " LEFT JOIN Author ON AuthorWork.author_id = Author.id"
-                    " WHERE Author.id = 1"
-                    " ORDER BY Work.published")
+                    " WHERE Author.id = :a_id"
+                    " ORDER BY Work.published").params(a_id=author_id)
 
         res = db.engine.execute(stmt)
 
@@ -28,6 +28,6 @@ class Author(Base):
             response.append({"id":row[0], "name":row[1], "published":row[2]})
 
         if not response:
-            response.append({"id":-1000, "name":"no works found", "published":"-"})
+            response.append({"id":-10, "name":"no works found", "published":0})
 
         return response

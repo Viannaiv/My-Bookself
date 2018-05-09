@@ -2,6 +2,10 @@
 
 {% block body %}
   <h2>Works of {{ author.name }}</h2>
+  {% if current_user.role_id == 1 %}
+  <a href="{{ url_for('author_editnameform', author_id=author.id) }}">Edit name of author</a>
+  <br/><br/>
+  {% endif %}
 
   <div class="table-responsive"> 
   <table class="table">
@@ -13,9 +17,10 @@
     </thead>
     <tbody>
     {% for work in works %}
-    {% if work.id == -1000 %}
+    {% if work.published == 0 %}
     <tr>
       <td>No works added yet for {{ author.name }}</td>
+      <td></td>
     </tr>
     {% else %}
     <tr>
@@ -36,5 +41,10 @@
     </tbody>
   </table>
   </div><br/>
+
+  {% if current_user.is_authenticated %}
+  <a href="{{ url_for('author_addworkform', author_id=author.id) }}">Add a work</a>
+  {% endif %}
+
 
 {% endblock %}
