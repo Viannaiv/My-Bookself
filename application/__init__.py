@@ -59,20 +59,12 @@ def login_required(role="ANY"):
 
 
 from application import views, testValues
-
-from application.works import models
-from application.works import views
-
-from application.auth import models
-from application.auth import views
-
-from application.editions import models
-from application.editions import views
-
-from application.formats import models
-from application.formats import views
-
-
+from application.works import models, views
+from application.auth import models, views
+from application.editions import models, views
+from application.formats import models, views
+from application.authors import models, views
+#categories here
 
 
 from application.auth.models import User

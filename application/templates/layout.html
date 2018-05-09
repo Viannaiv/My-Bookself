@@ -19,7 +19,7 @@
               <a class="nav-link" href="{{ url_for('works_index') }}">Works</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('works_form') }}">Add work</a>
+              <a class="nav-link" href="{{ url_for('works_form') }}">Add a work</a>
             </li>
             {% if current_user.is_authenticated %}
             <li class="nav-item">
@@ -27,6 +27,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('user_view', user_id=current_user.id) }}">Your information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('authors_index') }}">Authors</a>
             </li>
             {% endif %}
             {% if current_user.role_id == 1 %}

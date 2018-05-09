@@ -25,7 +25,7 @@ class Author(Base):
 
         response = []
         for row in res:
-            response.append({"id":row[0], "name":row[1], "published":row[3]})
+            response.append({"id":row[0], "name":row[1], "published":row[2]})
 
         if not response:
             response.append({"username":"No works added yet"})

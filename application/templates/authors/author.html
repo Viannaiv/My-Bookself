@@ -1,0 +1,27 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>Works of {{ author.name }}</h2>
+
+  <div class="table-responsive"> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Work</th>
+        <th>Published</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for work in works %}
+    <tr>
+      <td>
+        <a href="{{ url_for('work_view', work_id=work.id) }}">{{ work.name }}</a>
+      </td>
+      <td>{{ work.published }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div><br/>
+
+{% endblock %}

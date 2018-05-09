@@ -1,0 +1,26 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>Authors</h2>
+  <div class="table-responsive"> 
+  <table class="table">
+    <tbody>
+    {% for author in authors %}
+    <tr>
+      <td>
+        <a href="{{ url_for('author_view', author_id=author.id) }}">{{ author.name }}</a>
+      </td>
+      {% if current_user.role_id == 1 %}
+      <td>
+        <form method="POST" action="{{ url_for('author_delete', author_id=author.id) }}">
+          <input type="submit" value="Delete author"/>
+        </form>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div><br/>
+
+{% endblock %}
