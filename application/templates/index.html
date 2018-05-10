@@ -5,18 +5,6 @@
   Welcome to MyBookshelf!
 </h2>
 
-{% if no_books is defined %}
-<p>Users without editions in their Bookshelves:</p>
-
-<ul>
-  {% for user in no_books %}
-  <li>
-    {{user.username}}
-  </li>
-  {% endfor %}
-</ul>
-{% endif %}
-
 {% if user_count is defined %}
 <p>
   We currently have 

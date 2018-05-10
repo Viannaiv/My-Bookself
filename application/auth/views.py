@@ -169,7 +169,6 @@ def auth_delete(user_id):
     User.query.filter_by(id=user_id).delete()
     db.session().commit()
 
-    #Add a really delete? message so no misclicks are possible
     flash("Your account has succesfully been deleted.")
     return redirect(url_for("index"))
 
