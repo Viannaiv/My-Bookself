@@ -29,7 +29,7 @@
           <td>{{ edition.notes }}</td>
           <td>
             <form method="POST" action="{{ url_for('edition_delete', edition_id=edition.id) }}">
-              <input type="submit" value="Delete edition"/>
+              <input class="btn btn-danger btn-sm" type="submit" value="Delete edition"/>
             </form>
           </td>
         </tr>

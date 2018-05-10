@@ -25,11 +25,12 @@
           <a href="{{ url_for('auth_editpassword_form', user_id=user.id) }}">Change password</a>
         </td>
       </tr>
-  </table>
+  </table><br/><br/>
 
-  <h3>Delete your account and Bookshelf: </h3>
+  <h3>Delete your account and Bookshelf: </h3><br/>
   <span class="text-danger">The decision to delete your account is final and cannot be reversed!</span>
+  <br/><br/>
   <form method="POST" action="{{ url_for('auth_delete', user_id=user.id) }}">
-    <input class="text-danger" type="submit" value="DELETE ACCOUNT"/>
+    <input class="btn btn-danger" type="submit" value="DELETE ACCOUNT"/>
   </form>
 {% endblock %}

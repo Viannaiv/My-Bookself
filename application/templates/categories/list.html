@@ -13,7 +13,7 @@
       {% if current_user.role_id == 1 %}
       <td>
         <form method="POST" action="{{ url_for('category_delete', category_id=category.id) }}">
-          <input type="submit" value="Delete category"/>
+          <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete category"/>
         </form>
       </td>
       {% endif %}

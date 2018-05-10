@@ -183,7 +183,7 @@ def auth_admin_index():
 def auth_add_adminform():
     form = AddAdminForm()
 
-    form.user.choices = [(user.id, user.username) for user in User.query.all()]
+    form.user.choices = [(user.id, user.username) for user in User.query.filter(User.role_id != 1)]
 
     return render_template("auth/addadmin.html", form = form)
 
@@ -192,7 +192,7 @@ def auth_add_adminform():
 def auth_add_admin():
     form = AddAdminForm(request.form)
     
-    form.user.choices = [(user.id, user.username) for user in User.query.all()]
+    form.user.choices = [(user.id, user.username) for user in User.query.filter(User.role_id != 1)]
 
     if not form.validate_on_submit():
         return render_template("auth/addadmin.html", form = form)
