@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     {% for work in works %}
-    {% if work.published == 0 %}
+    {% if work.id == -10 %}
     <tr>
       <td>No works added yet for {{ author.name }}</td>
       <td></td>

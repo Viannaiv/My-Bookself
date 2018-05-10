@@ -104,4 +104,4 @@ def work_editdescription(work_id):
 
 @app.route("/works/<work_id>/", methods=["GET"])
 def work_view(work_id):
-    return render_template("works/work.html", work = Work.query.get(work_id))
+    return render_template("works/work.html", work = Work.query.get(work_id), authors = Work.authors_of_work(work_id))

@@ -2,6 +2,7 @@
 from application.models import Base
 from application.categories.models import WorkCategory
 from application.authors.models import AuthorWork
+from sqlalchemy.sql import text
 
 class Work(Base):
     published = db.Column(db.Integer, nullable=False)
@@ -15,3 +16,22 @@ class Work(Base):
         self.description = description
 
 #here methods for searching related categories and authors
+
+    @staticmethod
+    def authors_of_work(work_id):
+        stmt = text('SELECT Author.id, Author.name FROM Author'
+                    ' LEFT JOIN "AuthorWork" ON "AuthorWork".author_id = Author.id'
+                    ' LEFT JOIN Work ON "AuthorWork".work_id = Work.id'
+                    ' WHERE Work.id = :w_id'
+                    ' ORDER BY Author.name').params(w_id=work_id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        if not response:
+            response.append({"id":-10, "name":"no authors found"})
+
+        return response

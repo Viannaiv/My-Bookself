@@ -5,8 +5,21 @@
 
   <table class="table">
       <tr>
+        <td>Author(s): </td>
+        <td>
+          {% for author in authors %}
+          {% if author.id == -10 %}
+          <span>-<span>
+          {% else %}
+          <a href="{{ url_for('author_view', author_id=author.id) }}">{{ author.name }}</a><br/>
+          {% endif %}
+          {% endfor %}
+        </td>
+        <td></td>
+      </tr>
+      <tr>
         <td>Name: </td>
-        <td> {{ work.name }} </td>
+        <td>{{ work.name }}</td>
         <td>
           {% if current_user.role_id == 1 %}
           <a href="{{ url_for('work_editnameform', work_id=work.id) }}">Edit</a>
