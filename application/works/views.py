@@ -1,8 +1,9 @@
 ﻿from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.works.models import Work
-from application.works.forms import WorkForm, WorkEditName, WorkEditPublished, WorkEditDescription
+from application.works.forms import WorkForm, WorkEditName, WorkEditPublished, WorkEditDescription, WorkAddCategory
 from application.editions.models import Edition
+from application.categories.models import Category
 
 @app.route("/works", methods=["GET"])
 def works_index():
@@ -104,4 +105,32 @@ def work_editdescription(work_id):
 
 @app.route("/works/<work_id>/", methods=["GET"])
 def work_view(work_id):
-    return render_template("works/work.html", work = Work.query.get(work_id), authors = Work.authors_of_work(work_id))
+    return render_template("works/work.html", work = Work.query.get(work_id), authors = Work.authors_of_work(work_id), 
+        categories = Work.categories_of_work(work_id))
+
+@app.route("/works/addcategory/<work_id>/", methods=["GET"])
+@login_required()
+def work_addcategoryform(work_id):
+    form = WorkAddCategory()
+
+    form.category.choices = [(category.id, category.name) for category in Category.query.all()]
+
+    return render_template("works/addcategory.html", form = form, work_id=work_id)
+
+@app.route("/works/addcategory/<work_id>/", methods=["POST"])
+@login_required()
+def work_addcategory(work_id):
+    form = WorkAddCategory(request.form)
+    
+    form.category.choices = [(category.id, category.name) for category in Category.query.all()]
+
+    if not form.validate_on_submit():
+        return render_template("works/addcategory.html", form = form, work_id=work_id)
+
+    w = Work.query.get(work_id)
+    c = Category.query.get(form.category.data)
+    w.categories.append(c)
+
+    db.session().commit()
+
+    return redirect(url_for("work_view", work_id=work_id))

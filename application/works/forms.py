@@ -1,5 +1,5 @@
 ﻿from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, TextAreaField, validators
+from wtforms import StringField, IntegerField, TextAreaField, SelectField, validators
 
 class WorkForm(FlaskForm):
     name = StringField("Name: ", [validators.Length(min=1, max=150)])
@@ -23,6 +23,12 @@ class WorkEditPublished(FlaskForm):
 
 class WorkEditDescription(FlaskForm):
     description = TextAreaField("Description: ", [validators.Length(max=600, min=1)])
+
+    class Meta:
+        csrf = False
+
+class WorkAddCategory(FlaskForm):
+    category = SelectField("Select category: ", [validators.data_required()], choices=[], coerce=int)
 
     class Meta:
         csrf = False

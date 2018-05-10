@@ -64,7 +64,7 @@ from application.auth import models, views
 from application.editions import models, views
 from application.formats import models, views
 from application.authors import models, views
-#categories here
+from application.categories import models, views
 
 
 from application.auth.models import User

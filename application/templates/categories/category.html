@@ -1,0 +1,41 @@
+﻿{% extends "layout.html" %}
+
+{% block body %}
+  <h2>{{ category.name }}</h2>
+  {% if current_user.role_id == 1 %}
+  <a href="{{ url_for('category_editnameform', category_id=category.id) }}">Edit name of category</a>
+  <br/><br/>
+  {% endif %}
+
+  <h5>Works in this category: </h5>
+  <div class="table-responsive"> 
+  <table class="table">
+    <tbody>
+    {% for work in works %}
+    {% if work.id == -10 %}
+    <tr>
+      <td>No works added yet</td>
+      <td></td>
+    </tr>
+    {% else %}
+    <tr>
+      <td>
+        <a href="{{ url_for('work_view', work_id=work.id) }}">{{ work.name }}</a>
+      </td>
+      {% if current_user.role_id == 1 %}
+      <td>
+        <form method="POST" action="{{ url_for('category_work_delete', category_id=category.id, work_id=work.id) }}">
+          <input type="submit" value="Remove work from category"/>
+        </form>
+      </td>
+      {% else %}
+      <td></td>
+      {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+  </div><br/>
+
+{% endblock %}
