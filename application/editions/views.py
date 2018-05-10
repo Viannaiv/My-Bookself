@@ -29,8 +29,8 @@ def editions_create():
                     form.language.data, form.read.data)
 
     e.account_id = current_user.id
-    e.format_id = 1 #this will be fixed later
-    e.work_id = 1 #and this one as well
+    e.format_id = 1
+    e.work_id = 1
 
     db.session().add(e)
     db.session().commit()
@@ -43,7 +43,8 @@ def edition_view(edition_id):
     e = Edition.query.get(edition_id)
     work_id = e.work_id
     format_id = e.format_id
-    return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id), format = Format.query.get(format_id))
+    return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id), 
+        format = Format.query.get(format_id), authors = Work.authors_of_work(work_id))
 
 @app.route("/editions/editname/<edition_id>/", methods=["GET"])
 @login_required()

@@ -69,6 +69,19 @@
         </td>
         {% endif %}
       </tr>
+      <tr>
+        <td>Author(s): </td>
+        <td>
+          {% for author in authors %}
+          {% if author.id == -10 %}
+          <span>-<span>
+          {% else %}
+          <a href="{{ url_for('author_view', author_id=author.id) }}">{{ author.name }}</a><br/>
+          {% endif %}
+          {% endfor %}
+        </td>
+        <td></td>
+      </tr>
   </table>
   
 {% endblock %}
