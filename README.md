@@ -47,5 +47,10 @@ Järjestelmällä on lisäksi admineita/ylläpitäjiä, joilla on oikeus muuttaa
 **Dokumentaatio:**
 [Dokumentaatio](https://github.com/Viannaiv/My-Bookshelf/blob/master/documentation/Documentation.pdf)
 
-**User Manual:**
-[Käyttöohje](https://github.com/Viannaiv/My-Bookshelf/blob/master/documentation/User%20manual.md)
+
+HUOM! Testausta varten Herokussa olevaan sovellukseen (Sovellus Herokussa) on lisätty
+testi admin tunnukset. Kirjautuminen adminina onnistuu klikkaamalla navigointipalkin Log in
+-linkkiä ja syöttämällä Username-kenttään Plopper ja Password-kenttään testplopper.
+Pyydän ettet admin-oikeuksia testatessasi lisää tuntemattomia käyttäjiä admineiksi tai
+poista olennaista tietoa sovelluksesta. Toivon, että luot oman sisältösi joita sitten voit
+vapaasti poistaa ja muokata.
