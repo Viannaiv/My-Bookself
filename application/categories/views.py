@@ -4,10 +4,12 @@ from application.categories.models import Category
 from application.categories.forms import CategoryForm, CategoryEditName
 from application.works.models import Work
 
+# Listing Categories
 @app.route("/categories", methods=["GET"])
 def categories_index():
     return render_template("categories/list.html", categories = Category.query.all())
 
+# Deleting a Category
 @app.route("/categories/delete/<category_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def category_delete(category_id):
@@ -17,11 +19,13 @@ def category_delete(category_id):
 
     return redirect(url_for("categories_index"))
 
+# Listing the Works related to a Category
 @app.route("/categories/<category_id>/", methods=["GET"])
 def category_view(category_id):
     return render_template("categories/category.html", category = Category.query.get(category_id), 
         works = Category.works_in_category(category_id))
 
+# Adding a new Category
 @app.route("/categories/new/", methods=["GET"])
 @login_required()
 def categories_form():
@@ -42,6 +46,7 @@ def categories_create():
     
     return redirect(url_for("categories_index"))
 
+# Deleting a relation to a Work from the Category
 @app.route("/categories/deletework/<category_id>/<work_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def category_work_delete(category_id, work_id):
@@ -52,6 +57,7 @@ def category_work_delete(category_id, work_id):
 
     return redirect(url_for("category_view", category_id=category_id))
 
+# Editing name of a Category
 @app.route("/categories/editname/<category_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def category_editnameform(category_id):  

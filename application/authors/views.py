@@ -4,10 +4,12 @@ from application.authors.models import Author
 from application.works.models import Work
 from application.authors.forms import AuthorForm, AuthorAddWork, AuthorEditName
 
+# Listing Authors
 @app.route("/authors", methods=["GET"])
 def authors_index():
     return render_template("authors/list.html", authors = Author.query.all())
 
+# Deleting an Author
 @app.route("/authors/delete/<author_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def author_delete(author_id):
@@ -17,10 +19,12 @@ def author_delete(author_id):
 
     return redirect(url_for("authors_index"))
 
+# Showing the Works related to an Author
 @app.route("/authors/<author_id>/", methods=["GET"])
 def author_view(author_id):
     return render_template("authors/author.html", author = Author.query.get(author_id), works = Author.works_of_author(author_id))
 
+# Adding a new Author
 @app.route("/authors/new/", methods=["GET"])
 @login_required()
 def authors_form():
@@ -41,6 +45,7 @@ def authors_create():
     
     return redirect(url_for("authors_index"))
 
+# Deleting a relation between a Work and an Author
 @app.route("/authors/deletework/<author_id>/<work_id>/", methods=["POST"])
 @login_required(role="ADMIN")
 def author_work_delete(author_id, work_id):
@@ -51,6 +56,7 @@ def author_work_delete(author_id, work_id):
 
     return redirect(url_for("author_view", author_id=author_id))
 
+# Editing name of an Author
 @app.route("/authors/editname/<author_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def author_editnameform(author_id):  
@@ -72,6 +78,7 @@ def author_editname(author_id):
 
     return redirect(url_for("author_view", author_id=author_id))
 
+# Adding a relation to a Work to an Author
 @app.route("/authors/addwork/<author_id>/", methods=["GET"])
 @login_required()
 def author_addworkform(author_id):

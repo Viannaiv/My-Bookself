@@ -2,22 +2,13 @@
 
 from application.formats.models import Format
 from application.works.models import Work
-from application.auth.models import Role, User
+from application.auth.models import Role
 
-#delete users later
 def create_test_data():
     role = Role(1, "ADMIN")
     role2 = Role(2, "NORMAL")
     db.session.add(role)
     db.session.add(role2)
-    db.session.commit()
-
-    user = User("Vivianna", "Vianna", "plopetiplop")
-    user.role_id = 1
-    user2 = User("Tester", "Tester", "Testerer")
-    user2.role_id = 2
-    db.session().add(user)
-    db.session().add(user2)
     db.session.commit()
 
     work = Work("No work defined yet", 1700, "Undefined work.")
@@ -28,7 +19,6 @@ def create_test_data():
     db.session().add(work3)
     db.session().commit()
 
-    #maybe id=1 should be other not paperback?
     format = Format("Paperback")
     format2 = Format("Hardback")
     format3 = Format("Other")

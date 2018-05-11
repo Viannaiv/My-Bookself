@@ -3,11 +3,13 @@ from flask import redirect, render_template, request, url_for
 from application.formats.models import Format
 from application.formats.forms import FormatForm
 
+# Listing Formats
 @app.route("/formats", methods=["GET"])
 @login_required(role="ADMIN")
 def formats_index():
     return render_template("formats/list.html", formats = Format.query.all())
 
+# Adding a Format
 @app.route("/formats/new/", methods=["GET"])
 @login_required(role="ADMIN")
 def formats_form():

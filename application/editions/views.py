@@ -7,11 +7,13 @@ from application.works.models import Work
 from application.formats.models import Format
 from flask_login import current_user, login_manager
 
+# Listing Editions
 @app.route("/editions", methods=["GET"])
 @login_required()
 def editions_index():
     return render_template("editions/list.html", editions = Edition.query.filter_by(account_id = current_user.id))
 
+# Adding a new Edition
 @app.route("/editions/new/", methods=["GET"])
 @login_required()
 def editions_form():
@@ -37,6 +39,7 @@ def editions_create():
     
     return redirect(url_for("editions_index"))
 
+# Showing information of an Edition
 @app.route("/editions/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_view(edition_id):
@@ -46,6 +49,8 @@ def edition_view(edition_id):
     return render_template("editions/edition.html", edition = e, work = Work.query.get(work_id), 
         format = Format.query.get(format_id), authors = Work.authors_of_work(work_id))
 
+
+# Editing name of an Edition
 @app.route("/editions/editname/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editnameform(edition_id):  
@@ -70,6 +75,8 @@ def edition_editname(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+
+# Editing printed of an Edition
 @app.route("/editions/editprinted/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editprintedform(edition_id):  
@@ -94,6 +101,7 @@ def edition_editprinted(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Editing publisher of an Edition
 @app.route("/editions/editpublisher/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editpublisherform(edition_id):  
@@ -118,6 +126,7 @@ def edition_editpublisher(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Editing language of an Edition
 @app.route("/editions/editlanguage/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editlanguageform(edition_id):  
@@ -142,6 +151,7 @@ def edition_editlanguage(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Editing read of an edition
 @app.route("/editions/editread/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editreadform(edition_id):  
@@ -166,6 +176,7 @@ def edition_editread(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Deleting an Edition
 @app.route("/editions/delete/<edition_id>/", methods=["POST"])
 @login_required()
 def edition_delete(edition_id):
@@ -179,6 +190,7 @@ def edition_delete(edition_id):
   
     return redirect(url_for("editions_index"))
 
+# Editing notes of an Edition
 @app.route("/editions/editnotes/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editnotesform(edition_id):  
@@ -203,6 +215,7 @@ def edition_editnotes(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Changing the Work linked to the Edition
 @app.route("/editions/editwork/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editworkform(edition_id):
@@ -233,6 +246,7 @@ def edition_editwork(edition_id):
 
     return redirect(url_for("edition_view", edition_id=edition_id))
 
+# Changing the Format linked to an Edition
 @app.route("/editions/editformat/<edition_id>/", methods=["GET"])
 @login_required()
 def edition_editformatform(edition_id):

@@ -35,13 +35,13 @@ class EditionEditLanguage(FlaskForm):
     class Meta:
         csrf = False
 
-class EditionEditRead(FlaskForm): #Will be moved to edition.html later?
+class EditionEditRead(FlaskForm):
     read = BooleanField("I have read this book: ")
 
     class Meta:
         csrf = False
 
-class EditionEditNotes(FlaskForm): #Change max possibly later + add old notes to be visible here
+class EditionEditNotes(FlaskForm):
     notes = TextAreaField("Notes: ", [validators.Length(min=2, max=300)])
 
     class Meta:
@@ -53,7 +53,7 @@ class EditionSelectWork(FlaskForm):
     class Meta:
         csrf = False
 
-class EditionSelectFormat(FlaskForm): #maybe change to Radio later
+class EditionSelectFormat(FlaskForm):
     format = SelectField("Select work: ", [validators.data_required()], choices=[], coerce=int)
 
     class Meta:

@@ -5,28 +5,16 @@ from application.works.forms import WorkForm, WorkEditName, WorkEditPublished, W
 from application.editions.models import Edition
 from application.categories.models import Category
 
+# Listing Works
 @app.route("/works", methods=["GET"])
 def works_index():
     return render_template("works/list.html", works = Work.query.filter(Work.id != 1))
 
+# Creating new Works
 @app.route("/works/new/", methods=["GET"])
 @login_required()
 def works_form():
     return render_template("works/new.html", form = WorkForm())
-
-@app.route("/works/delete/<work_id>/", methods=["POST"])
-@login_required(role="ADMIN")
-def work_delete(work_id):
-    editions = Edition.query.filter_by(work_id=work_id)
-
-    for edition in editions:
-        edition.work_id = 1
-    db.session().commit()
-
-    Work.query.filter_by(id=work_id).delete()
-    db.session().commit()
-  
-    return redirect(url_for("works_index"))
 
 @app.route("/works/new/", methods=["POST"])
 @login_required()
@@ -43,6 +31,22 @@ def works_create():
     
     return redirect(url_for("works_index"))
 
+# Deleting a Work
+@app.route("/works/delete/<work_id>/", methods=["POST"])
+@login_required(role="ADMIN")
+def work_delete(work_id):
+    editions = Edition.query.filter_by(work_id=work_id)
+
+    for edition in editions:
+        edition.work_id = 1
+    db.session().commit()
+
+    Work.query.filter_by(id=work_id).delete()
+    db.session().commit()
+  
+    return redirect(url_for("works_index"))
+
+# Editing name of a Work
 @app.route("/works/editname/<work_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def work_editnameform(work_id):  
@@ -63,6 +67,7 @@ def work_editname(work_id):
   
     return redirect(url_for("work_view", work_id=work_id))
 
+# Editing published of a Work
 @app.route("/works/editpublished/<work_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def work_editpublishedform(work_id):  
@@ -83,6 +88,7 @@ def work_editpublished(work_id):
   
     return redirect(url_for("work_view", work_id=work_id))
 
+# Editing description of a Work
 @app.route("/works/editdescription/<work_id>/", methods=["GET"])
 @login_required(role="ADMIN")
 def work_editdescriptionform(work_id):  
@@ -103,11 +109,13 @@ def work_editdescription(work_id):
   
     return redirect(url_for("work_view", work_id=work_id))
 
+# Showing information of a Work
 @app.route("/works/<work_id>/", methods=["GET"])
 def work_view(work_id):
     return render_template("works/work.html", work = Work.query.get(work_id), authors = Work.authors_of_work(work_id), 
         categories = Work.categories_of_work(work_id))
 
+# Adding a category to a Work
 @app.route("/works/addcategory/<work_id>/", methods=["GET"])
 @login_required()
 def work_addcategoryform(work_id):

@@ -6,6 +6,7 @@ from application.auth.models import User
 from application.editions.models import Edition
 from application.auth.forms import LoginForm, SigninForm, ChangeNameForm, ChangePasswordForm, ChangeUsernameForm, AddAdminForm
 
+# Logging in
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
     if request.method == "GET":
@@ -24,6 +25,7 @@ def auth_login():
     flash("You have been logged in.")
     return redirect(url_for("index"))
 
+# Logging out
 @app.route("/auth/logout")
 @login_required()
 def auth_logout():
@@ -31,6 +33,7 @@ def auth_logout():
     flash("You have been logged out.")
     return redirect(url_for("index"))  
 
+# Registering
 @app.route("/auth/signin", methods = ["GET"])
 def auth_signin_form():
     return render_template("auth/signinform.html", form = SigninForm())
@@ -60,6 +63,7 @@ def auth_signin():
     flash("You have been registered and logged in.")
     return redirect(url_for("index"))
 
+# Showing information of a User
 @app.route("/auth/userinfo/<user_id>/", methods=["GET"])
 @login_required()
 def user_view(user_id):
@@ -71,6 +75,7 @@ def user_view(user_id):
 
     return render_template("auth/userinfo.html", user = user)
 
+# Editing password of a User
 @app.route("/auth/editpassword/<user_id>/", methods = ["GET"])
 @login_required()
 def auth_editpassword_form(user_id):
@@ -98,6 +103,7 @@ def auth_editpassword(user_id):
     flash("Your password has succesfully been changed.")
     return redirect(url_for("user_view", user_id=user_id))
 
+# Editing username of a User
 @app.route("/auth/editusername/<user_id>/", methods = ["GET"])
 @login_required()
 def auth_editusername_form(user_id):
@@ -129,6 +135,7 @@ def auth_editusername(user_id):
     flash("Your username has succesfully been changed.")
     return redirect(url_for("user_view", user_id=user_id))
 
+# Editing name of a User
 @app.route("/auth/editname/<user_id>/", methods = ["GET"])
 @login_required()
 def auth_editname_form(user_id):
@@ -156,6 +163,7 @@ def auth_editname(user_id):
     flash("Your name has succesfully been changed.")
     return redirect(url_for("user_view", user_id=user_id))
 
+# Deleting a User and the Editions linked to the User
 @app.route("/auth/delete/<user_id>/", methods=["POST"])
 @login_required()
 def auth_delete(user_id):
@@ -172,11 +180,13 @@ def auth_delete(user_id):
     flash("Your account has succesfully been deleted.")
     return redirect(url_for("index"))
 
+# Listing all admins
 @app.route("/auth/admins", methods=["GET"])
 @login_required(role="ADMIN")
 def auth_admin_index():
     return render_template("auth/admins.html", admins = User.query.filter_by(role_id=1))
 
+# Adding an admin
 @app.route("/auth/addadmin", methods=["GET"])
 @login_required(role="ADMIN")
 def auth_add_adminform():

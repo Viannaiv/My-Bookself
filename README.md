@@ -49,5 +49,3 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkell
 
 **Tietokantakaavio:**
 [Tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
-
-Alustava versio kaaviosta! Attribuutit lisätään jälkeenpäin ja rakenne tulee todennäköisesti hieman vielä muuttumaan.
