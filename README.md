@@ -44,4 +44,8 @@ Järjestelmällä on lisäksi admineita/ylläpitäjiä, joilla on oikeus muuttaa
 **Tietokantakaavio:**
 [Tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
 
-uudet linkit tänne ja admin tunnukset
+**Dokumentaatio:**
+[Dokumentaatio](https://github.com/Viannaiv/My-Bookshelf/blob/master/documentation/Documentation.pdf)
+
+**User Manual:**
+[Käyttöohje](https://github.com/Viannaiv/My-Bookshelf/blob/master/documentation/User%20manual.md)
