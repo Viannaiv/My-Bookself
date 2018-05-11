@@ -1,7 +1,7 @@
 
 # My Bookshelf
 
-Työn alla oleva opiskelijaprojekti Helsingin yliopiston tarjoamaa Tietokantasovellus-harjoitustyötä
+Opiskelijaprojekti Helsingin yliopiston tarjoamaa Tietokantasovellus-harjoitustyötä
 varten.
 
 **Sovellus löytyy Herokusta:**
@@ -10,23 +10,17 @@ varten.
 ## Kuvaus
 
 My Bookself on web-sovellus, jonka avulla sovelluksen käyttäjä voi pitää kirjaa oman kirjahyllynsä
- sisällöstä.
+sisällöstä.
 
-Sovellus tarjoaa mahdollisuuden hakea erilaisia teoksia ja selata niitä esimerkiksi nimen tai 
-tyypin perusteella. Samaan teokseen voidaan pääätyä usealla erilaisella haulla, sillä samalla 
-teoksella voi mm. olla useita erilaisia ja erikielisiä nimiä. Lisäksi yksittäistä teosta tarkasteltaessa
-on tarjolla kirjautuneiden käyttäjien jättämiä mielipiteitä (Toteutetaan lisänä, jos vain on aikaa). 
+Kirautumattomlle käyttäjällä sovellus tarjoaa mahdollisuuden selata sovelluksen tietokantaan lisättyjä teoksia, kategorioita ja kirjailijoita. Lisäksi kättäjä voi selata tiettyyn kategoriaan kuuluvia tai tietyn kirjailijan teoksia. 
 
-Rekisteröitynyt tavallinen käyttäjä voi kirjautua omaan "kirjahyllyynsä", jossa on mahdollista tarkastella
-käyttäjän omistamia painoksia eli versioita teoksista (siis yksittäisiä kappaleita kirjoja, 
-sarjakuvia, mangaa jne.). Lisäksi käyttäjän on mahdollista lisätä painoksia, määrittää ja muuttaa 
-niiden tietoja sekä poistaa niitä hyllystään. Kirjautuminen tapahtuisi käyttäjätunnuksella ja 
-salasanalla.
+Rekisteröitynyt tavallinen käyttäjä voi siirtyä omaan "kirjahyllyynsä", jossa hänen on mahdollista tarkastella
+sinne lisäämiään painoksia eli versioita teoksista (siis yksittäisiä kappaleita kirjoja, 
+sarjakuvia, mangaa jne.). Lisäksi rekisteröityneen käyttäjän on mahdollista lisätä ja poistaa painoksia hyllystän sekä määrittää ja muuttaa niiden tietoja. Kirjautuminen sovellukseen tapahtu käyttäjätunnuksen ja salasanan avulla. Rekisteröitynellä käyttäjällä on myös oikeus tarkastella, muuttaa ja poistaa omat tietonsa.
 
-Rekisteröityneellä tavallisella käyttäjällä on myös mahdollisuus pyytää jonkin puuttuvan teoksen lisäämistä
-tai esimerkiksi vaihtoehtoisen nimen lisäämistä kirjalle (Ainakin toistaiseksi kaikkilla mahdollisuus lisätä teoksia).
-Järjestelmällä on lisäksi ylläpitäjä/ ylläpitäjiä, joilla on oikeus käsitellä aiemmin mainittuja pyyntöjä ja muuttaa teosten tietoja, lisätä teoksia sekä 
-mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkellä ylläpitäjän oikeuksiin kuuluu uusien formaattien lisääminen)
+Rekisteröityneellä tavallisella käyttäjällä on myös mahdollisuus lisätä puuttuvia teoksia, kategorioita ja kirjailijoita. Sekä lisätä kategorioita teoksiin sekä teoksia kirjailijoille.
+
+Järjestelmällä on lisäksi admineita/ylläpitäjiä, joilla on oikeus muuttaa sellaisia tietoja, jotka voivat vaikuttaa/vaikuttavat esimerkiksi muiden käyttäjien painosten tietoihin. Esimerkkinä tällaisesta ovat kategoroiden/kirjailijoiden/teosten tietojen muokkaus sekä kategorioiden/kirjailijoiden/teosten poistaminen tietokannasta. Admin voi myös lisätä uusia formaatteja, antaa toisille käyttäjille admin oikeudet sekä tarkastella listaa admin-roolillisista käyttäjistä.
 
 
 
@@ -49,3 +43,5 @@ mahdollisesti lisätä tavallisia käyttäjiä ylläpitäjiksi. (Tällä hetkell
 
 **Tietokantakaavio:**
 [Tietokantakaavio](https://github.com/Viannaiv/My-Bookself/blob/master/documentation/database%20diagram.png)
+
+uudet linkit tänne ja admin tunnukset
